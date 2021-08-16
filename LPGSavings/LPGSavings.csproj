@@ -26,5 +26,9 @@
     <Folder Include="Validators\" />
     <Folder Include="Services\Storage\" />
     <Folder Include="ViewModels\Base\" />
+    <Folder Include="Assets\Fonts\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Assets\Fonts\" />
   </ItemGroup>
 </Project>
