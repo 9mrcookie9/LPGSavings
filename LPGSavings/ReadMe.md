@@ -38,3 +38,8 @@ Opcjonalnie powinna być dostępna informacja o aktualnej cenie benzyny.
 
 Wewnątrz aplikacji powinna być dostępna możliwość wprowadzania innych opłat jak serwis bądź awaria. 
 
+
+
+
+Sources:
+https://assets8.lottiefiles.com/private_files/lf30_BU51PH.json

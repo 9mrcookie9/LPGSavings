@@ -4,9 +4,9 @@ using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
 
-
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 [assembly: Preserve(AllMembers = true)]
+
 [assembly: NeutralResourcesLanguage("pl-PL")]
 [assembly: ExportFont("fa-brands-400.ttf", Alias = "fab")]
 [assembly: ExportFont("fa-duotone-900.ttf", Alias = "fad")]

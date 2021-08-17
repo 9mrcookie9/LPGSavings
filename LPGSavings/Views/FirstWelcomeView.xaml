@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:pancakeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:views="clr-namespace:LPGSavings.Views" 
+             xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+             xmlns:behaviors="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="LPGSavings.Views.FirstWelcomeView">
+  <ContentView.Content>
+        <StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Margin="40,30,30,0"
+                       FontSize="30">Witaj!</Label>
+            </StackLayout>
+
+            <Grid Margin="20,0"
+                      VerticalOptions="CenterAndExpand"
+                      ColumnDefinitions="40,*"
+                      RowDefinitions="Auto,Auto">
+                <Label Text="&#xf192;" 
+                            FontSize="15"
+                            TextColor="Blue"
+                            VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="End"
+                            FontFamily="fas"/>
+                <Label Margin="20,10"
+                           Grid.Column="1">
+                    Za pomocą tej aplikacji będziesz mógł kontrolować przebieg inwestycji w instalację LPG.
+                </Label>
+                <Label Grid.Row="1" 
+                           Text="&#xf192;" 
+                           FontSize="15"
+                           TextColor="Blue"
+                           VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="End"
+                           FontFamily="fas"/>
+                <Label Grid.Row="1" 
+                           Grid.Column="1" 
+                           Margin="20,10">
+                    W przyszłości pozwolimy Ci przewidzieć kiedy instalacja “zacznie na siebie zarabiać”!
+                </Label>
+            </Grid>
+            <forms:AnimationView    Animation="{StaticResource LottiePigMoney}"
+                                        AnimationSource="AssetOrBundle"
+                                        VerticalOptions="FillAndExpand" 
+                                        RepeatMode="Infinite" 
+                                        HeightRequest="100"
+                                        HorizontalOptions="FillAndExpand" />
+            <pancakeview:PancakeView Padding="14,8"
+                                         VerticalOptions="End"
+                                         Margin="0,40"
+                                         behaviors:TouchEffect.NativeAnimation="True"
+                                         HorizontalOptions="Center" 
+                                         CornerRadius="25">
+                <pancakeview:PancakeView.Border>
+                    <pancakeview:Border Thickness="1"
+                                            Color="Blue" />
+                </pancakeview:PancakeView.Border>
+                <StackLayout Orientation="Horizontal"
+                                 HorizontalOptions="Center">
+                    <Label VerticalTextAlignment="Center"
+                               FontSize="13"
+                               TextColor="Blue"
+                               FontAttributes="Bold">Powiedz nam o swoim aucie</Label>
+                    <Label Text="&#xf054;" 
+                               FontSize="15"
+                               TextColor="Blue"
+                               VerticalTextAlignment="Center"
+                               FontFamily="fas"/>
+                </StackLayout>
+            </pancakeview:PancakeView>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>
