@@ -15,5 +15,7 @@ namespace LPGSavings
         {
             InitializeComponent();
         }
+
+        public Grid MainHolder => mainGridHolder;
     }
 }

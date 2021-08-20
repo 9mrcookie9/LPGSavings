@@ -5,6 +5,9 @@
              xmlns:views="clr-namespace:LPGSavings.Views" 
              xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
              xmlns:behaviors="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:viewmodels="clr-namespace:LPGSavings.ViewModels"
+             BackgroundColor="Transparent"
+             x:DataType="viewmodels:FirstWelcomeViewModel"
              x:Class="LPGSavings.Views.FirstWelcomeView">
   <ContentView.Content>
         <StackLayout>
@@ -50,6 +53,7 @@
                                          VerticalOptions="End"
                                          Margin="0,40"
                                          behaviors:TouchEffect.NativeAnimation="True"
+                                     behaviors:TouchEffect.Command="{Binding OpenCarCreationFirstStepCommand}"
                                          HorizontalOptions="Center" 
                                          CornerRadius="25">
                 <pancakeview:PancakeView.Border>

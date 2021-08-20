@@ -7,6 +7,7 @@
              xmlns:behaviors="http://xamarin.com/schemas/2020/toolkit" 
              xmlns:components="clr-namespace:LPGSavings.Controls"
              xmlns:effects="clr-namespace:LPGSavings.Effects"
+             xmlns:introforms="clr-namespace:LPGSavings.Views.IntroForms" xmlns:partials="clr-namespace:LPGSavings.Views.Partials"
              BackgroundColor="#f3f3f3"
              x:Class="LPGSavings.MainPage">
     <ContentPage.Resources>
@@ -17,51 +18,15 @@
             <Style TargetType="Entry">
                 <Setter Property="TextColor" Value="#3d3d3d" />
             </Style>
-        </ResourceDictionary>
+        </ResourceDictionary> 
     </ContentPage.Resources>
     <ScrollView>
-        <Grid>
-            <StackLayout Margin="20"
-                         >
-                <Label Margin="20,30,10,30"
-                        FontSize="30">Wypełnij formularz [2/2]</Label>
-                <components:OutlinedMaterialEntry   PlaceholderText="Średnia cena LPG [zł]"
-                                                    ReturnType="Next"
-                                                    BackgroundColor="#f3f3f3"
-                                                    HelperText="Przykładowa wartość: 2.40 zł" />
-                <components:OutlinedMaterialEntry   PlaceholderText="Koszt instalacji[zł]*"
-                                                    ReturnType="Next"
-                                                    BackgroundColor="#f3f3f3"
-                                                    HelperText="Przykładowa wartość: 2580 zł" />
-                <components:OutlinedMaterialEntry   PlaceholderText="Koszt przeglądów [zł]"
-                                                    ReturnType="Next"
-                                                    BackgroundColor="#f3f3f3"
-                                                    HelperText="Przykładowa wartość: 0 zł (WYMAGANE)" />
-
-                <pancakeview:PancakeView Padding="14,8"
-                                         VerticalOptions="EndAndExpand"
-                                         Margin="0,40"
-                                         behaviors:TouchEffect.NativeAnimation="True"
-                                         HorizontalOptions="Center" 
-                                         CornerRadius="25">
-                    <pancakeview:PancakeView.Border>
-                        <pancakeview:Border Thickness="1"
-                                            Color="Blue" />
-                    </pancakeview:PancakeView.Border>
-                    <StackLayout Orientation="Horizontal"
-                                 HorizontalOptions="Center">
-                        <Label VerticalTextAlignment="Center"
-                               FontSize="13"
-                               TextColor="Blue"
-                               FontAttributes="Bold">Zakończ konfigurację</Label>
-                        <Label Text="&#xf054;" 
-                               FontSize="15"
-                               TextColor="Blue"
-                               VerticalTextAlignment="Center"
-                               FontFamily="fas"/>
-                    </StackLayout>
-                </pancakeview:PancakeView>
-            </StackLayout>
+        <Grid RowDefinitions="80,*"
+              RowSpacing="0">
+           <partials:TitleHeaderView />
+            <Grid x:Name="mainGridHolder" Grid.Row="1">
+               <views:FirstWelcomeView />
+            </Grid>
         </Grid>
     </ScrollView>
 

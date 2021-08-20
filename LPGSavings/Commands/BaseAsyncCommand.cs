@@ -1,11 +1,14 @@
 ﻿
 using System;
 using System.Threading.Tasks;
+using LPGSavings.Utilities;
+using Microsoft.Extensions.Logging;
 
 namespace LPGSavings.Commands
 {
     public abstract class BaseAsyncCommand : IBaseAsyncCommand
     {
+        protected ILogger<IBaseAsyncCommand> _logger = LoggerHelper.PrepareLogger<IBaseAsyncCommand>();
         public event EventHandler CanExecuteChanged;
         public void RaiseCanExecuteChanged(EventArgs parameter = null)
         {

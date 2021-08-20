@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pancakeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    x:Class="LPGSavings.Views.Partials.TitleHeaderView">
+    <ContentView.Content>
+         <pancakeview:PancakeView Padding="20"
+                                  BackgroundColor="{StaticResource PrimaryColorDark}"
+                                  CornerRadius="0,0,40,40"
+                                  VerticalOptions="Start">
+                <pancakeview:PancakeView.Shadow>
+                    <pancakeview:DropShadow />
+                </pancakeview:PancakeView.Shadow>
+                <StackLayout
+                            Orientation="Horizontal">
+                    <Label Text="Dziennik LPG"
+                            FontAttributes="Bold"
+                           TextColor="White"
+                            HorizontalOptions="FillAndExpand"
+                            FontSize="30"/>
+                    <Label Text="&#xf52f;"
+                            FontSize="30"
+                           TextColor="White"
+                            HorizontalOptions="End"
+                            FontFamily="fas"/>
+                </StackLayout>
+            </pancakeview:PancakeView>
+    </ContentView.Content>
+</ContentView>

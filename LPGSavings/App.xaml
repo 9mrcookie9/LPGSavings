@@ -6,7 +6,8 @@
         <ResourceDictionary>
             <x:String x:Key="LottiePigMoney">pig-money.json</x:String>
             <x:String x:Key="LottieNext">next.json</x:String>
-            
+            <Color x:Key="PrimaryColorDark">#1976D2</Color>
+            <Color x:Key="PrimaryColor">#2196F3</Color>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
