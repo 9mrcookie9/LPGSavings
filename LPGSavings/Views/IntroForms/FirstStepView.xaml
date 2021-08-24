@@ -16,10 +16,12 @@
                         FontSize="30">Wypełnij formularz [1/2]</Label>
             <components:OutlinedMaterialEntry   PlaceholderText="Całkowity przebieg pojazdu [km]*"
                                                     ReturnType="Next"
+                                                Text="{Binding Odometer,Mode=TwoWay}"
                                                     BackgroundColor="#f3f3f3"
                                                     HelperText="Przykładowa wartość: 10 000 km (WYMAGANE)" />
             <components:OutlinedMaterialEntry   PlaceholderText="Przejechane na LPG [km]"
                                                     ReturnType="Next"
+                                                Text="{Binding OdometerLPG,Mode=TwoWay}"
                                                     BackgroundColor="#f3f3f3"
                                                     HelperText="Przykładowa wartość: 0 km" />
             <Grid>
@@ -28,10 +30,10 @@
                                          CornerRadius="10">
                     <pancakeview:PancakeView.Border>
                         <pancakeview:Border Thickness="1"
-                                            Color="Black" />
+                                            Color="#6B6B6B" />
                     </pancakeview:PancakeView.Border>
                     <DatePicker  HorizontalOptions="FillAndExpand"
-                                 TextColor="Black"
+                                 TextColor="#6B6B6B"
                                      Format="dd.MM.yyyy">
                         <DatePicker.Effects>
                             <effects:RemoveEntryUnderline />
@@ -39,21 +41,22 @@
                     </DatePicker>
                 </pancakeview:PancakeView>
                 <Label FontSize="16"
-                           BackgroundColor="#f3f3f3"
-                           VerticalOptions="Start"
-                           Margin="10,0,0,0"
-                           Padding="5,0"
-                           HorizontalOptions="Start">Data założenia instalacji LPG:</Label>
+                       BackgroundColor="#f3f3f3"
+                       TextColor="#6B6B6B"
+                       VerticalOptions="Start"
+                       Margin="10,0,0,0"
+                       Padding="5,0"
+                       HorizontalOptions="Start">Data założenia instalacji LPG:</Label>
             </Grid>
 
 
-            <pancakeview:PancakeView Padding="14,8"
-                                         VerticalOptions="EndAndExpand"
-                                         Margin="0,40"
-                                         behaviors:TouchEffect.NativeAnimation="True"
-                                         behaviors:TouchEffect.Command="{Binding CarCreationMoveToSecondStep}"
-                                         HorizontalOptions="Center" 
-                                         CornerRadius="25">
+            <pancakeview:PancakeView    Padding="14,8"
+                                        VerticalOptions="EndAndExpand"
+                                        Margin="0,40"
+                                        behaviors:TouchEffect.NativeAnimation="True"
+                                        behaviors:TouchEffect.Command="{Binding CarCreationMoveToSecondStep}"
+                                        HorizontalOptions="Center" 
+                                        CornerRadius="25">
                 <pancakeview:PancakeView.Border>
                     <pancakeview:Border Thickness="1"
                                             Color="{StaticResource PrimaryColorDark}" />

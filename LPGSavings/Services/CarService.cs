@@ -24,7 +24,7 @@ namespace LPGSavings.Services
             return context.Cars.First();
         }
 
-        public async Task InitializeCar(uint distance, uint firstDistance, uint distanceLPG, uint firstDistanceLPG, decimal systemPrice, float systemCapacity, DateTime installationDate)
+        public async Task InitializeCar(uint distance, uint distanceLPG, decimal systemPrice, float systemCapacity, DateTime installationDate)
         {
             using var context = new MainContext();
             if (context.Cars.Count() > 0)
@@ -32,7 +32,7 @@ namespace LPGSavings.Services
                 var toRemove = context.Cars.ToList();
                 context.Cars.RemoveRange(toRemove);
             }
-            var entity = new Car(distance, firstDistance, distanceLPG, firstDistanceLPG, systemPrice, systemCapacity, installationDate);
+            var entity = new Car(distance, distance, distanceLPG, distanceLPG, systemPrice, systemCapacity, installationDate);
             context.Cars.Add(entity);
             await context.SaveChangesAsync();
         }

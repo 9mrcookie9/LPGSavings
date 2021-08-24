@@ -19,21 +19,29 @@
                         FontSize="30">Wypełnij formularz [2/2]</Label>
                 <components:OutlinedMaterialEntry   PlaceholderText="Średnia cena LPG [zł]"
                                                     ReturnType="Next"
+                                                    Text="{Binding AveragePriceLPG,Mode=TwoWay}"
                                                     BackgroundColor="#f3f3f3"
-                                                    HelperText="Przykładowa wartość: 2.40 zł" />
+                                                    HelperText="Przykładowa wartość: 2.56 zł" />
                 <components:OutlinedMaterialEntry   PlaceholderText="Koszt instalacji[zł]*"
                                                     ReturnType="Next"
+                                                    Text="{Binding InstallationCost,Mode=TwoWay}"
                                                     BackgroundColor="#f3f3f3"
                                                     HelperText="Przykładowa wartość: 2580 zł" />
-                <components:OutlinedMaterialEntry   PlaceholderText="Koszt przeglądów [zł]"
+            <components:OutlinedMaterialEntry   PlaceholderText="Pojemność zbiornika [L]*"
+                                                    ReturnType="Next"
+                                                    Text="{Binding SystemCapacity,Mode=TwoWay}"
+                                                    BackgroundColor="#f3f3f3"
+                                                    HelperText="Przykładowa wartość: 50 L" />
+            <components:OutlinedMaterialEntry   PlaceholderText="Koszt przeglądów [zł]"
+                                                    Text="{Binding MaintenanceCosts,Mode=TwoWay}"
                                                     ReturnType="Next"
                                                     BackgroundColor="#f3f3f3"
                                                     HelperText="Przykładowa wartość: 0 zł (WYMAGANE)" />
 
                 <pancakeview:PancakeView Padding="14,8"
                                          VerticalOptions="EndAndExpand"
-                                         Margin="0,40"
                                          behaviors:TouchEffect.NativeAnimation="True"
+                                         behaviors:TouchEffect.Command="{Binding CreateCarCommand}"
                                          HorizontalOptions="Center" 
                                          CornerRadius="25">
                     <pancakeview:PancakeView.Border>
