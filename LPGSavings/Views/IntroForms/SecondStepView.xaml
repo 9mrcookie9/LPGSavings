@@ -9,36 +9,44 @@
     xmlns:components="clr-namespace:LPGSavings.Controls"
     xmlns:effects="clr-namespace:LPGSavings.Effects"
     xmlns:viewmodels="clr-namespace:LPGSavings.ViewModels"
+    xmlns:converters="clr-namespace:LPGSavings.Converters"
     BackgroundColor="Transparent"
-    x:DataType="viewmodels:IntroViewModel"
+    x:DataType="viewmodels:SecondStepViewModel"
     x:Class="LPGSavings.Views.IntroForms.SecondStepView">
+    <ContentView.Resources>
+        <ResourceDictionary>
+             <converters:DecimalConverter x:Key="DecimalConverter" />
+        </ResourceDictionary>
+    </ContentView.Resources>
     <ContentView.Content>
          <StackLayout Margin="20"
                          >
                 <Label Margin="20,30,10,30"
                         FontSize="30">Wypełnij formularz [2/2]</Label>
-                <components:OutlinedMaterialEntry   PlaceholderText="Średnia cena LPG [zł]"
-                                                    ReturnType="Next"
-                                                    Text="{Binding AveragePriceLPG,Mode=TwoWay}"
-                                                    BackgroundColor="#f3f3f3"
-                                                    HelperText="Przykładowa wartość: 2.56 zł" />
-                <components:OutlinedMaterialEntry   PlaceholderText="Koszt instalacji[zł]*"
-                                                    ReturnType="Next"
-                                                    Text="{Binding InstallationCost,Mode=TwoWay}"
-                                                    BackgroundColor="#f3f3f3"
-                                                    HelperText="Przykładowa wartość: 2580 zł" />
-            <components:OutlinedMaterialEntry   PlaceholderText="Pojemność zbiornika [L]*"
-                                                    ReturnType="Next"
-                                                    Text="{Binding SystemCapacity,Mode=TwoWay}"
-                                                    BackgroundColor="#f3f3f3"
-                                                    HelperText="Przykładowa wartość: 50 L" />
-            <components:OutlinedMaterialEntry   PlaceholderText="Koszt przeglądów [zł]"
-                                                    Text="{Binding MaintenanceCosts,Mode=TwoWay}"
-                                                    ReturnType="Next"
-                                                    BackgroundColor="#f3f3f3"
-                                                    HelperText="Przykładowa wartość: 0 zł (WYMAGANE)" />
-
-                <pancakeview:PancakeView Padding="14,8"
+             <components:MaterialEntry
+                    Placeholder="Średnia cena LPG [zł]"
+                    Text="{Binding Car.AveragePriceLPG,Converter={StaticResource DecimalConverter},Mode=TwoWay}" />
+             <components:MaterialEntry
+                    HorizontalOptions="StartAndExpand"
+                    Placeholder="Koszt instalacji[zł]*"
+                    Text="{Binding Car.InstallationCost,Converter={StaticResource DecimalConverter},Mode=TwoWay}"/>
+             <components:MaterialEntry
+                    HorizontalOptions="StartAndExpand"
+                    Placeholder="Pojemność zbiornika [L]*"
+                    Text="{Binding Car.SystemCapacity,Converter={StaticResource DecimalConverter},Mode=TwoWay}" />
+             <components:MaterialEntry
+                    HorizontalOptions="StartAndExpand"
+                    Placeholder="Koszt przeglądów [zł]"
+                    Text="{Binding Car.MaintenanceCosts,Converter={StaticResource DecimalConverter},Mode=TwoWay}" />
+             <ActivityIndicator IsEnabled="{Binding IsBusy}"
+                                IsRunning="{Binding IsBusy}"
+                                IsVisible="{Binding IsBusy}"
+                                Color="{StaticResource PrimaryColor}"
+                                HeightRequest="40"
+                                WidthRequest="40"
+                                VerticalOptions="CenterAndExpand"
+                                HorizontalOptions="Center" />
+             <pancakeview:PancakeView Padding="14,8"
                                          VerticalOptions="EndAndExpand"
                                          behaviors:TouchEffect.NativeAnimation="True"
                                          behaviors:TouchEffect.Command="{Binding CreateCarCommand}"

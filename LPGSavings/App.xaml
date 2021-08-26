@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:LPGSavings.Controls"
              x:Class="LPGSavings.App">
     <Application.Resources>
         <ResourceDictionary>
@@ -8,6 +9,12 @@
             <x:String x:Key="LottieNext">next.json</x:String>
             <Color x:Key="PrimaryColorDark">#1976D2</Color>
             <Color x:Key="PrimaryColor">#2196F3</Color>
+            <Style TargetType="controls:MaterialEntry">
+                <Setter Property="BackgroundColor" Value="#f3f3f3" />
+            </Style>
+              <Style TargetType="controls:MaterialDatePicker">
+                <Setter Property="BackgroundColor" Value="#f3f3f3" />
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

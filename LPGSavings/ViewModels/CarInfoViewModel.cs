@@ -1,29 +1,25 @@
 ﻿using System;
-using System.Windows.Input;
-
-using LPGSavings.Commands.Intro;
-using LPGSavings.Services;
 using LPGSavings.ViewModels.Base;
 
 namespace LPGSavings.ViewModels
 {
-    public sealed class IntroViewModel : BaseViewModel
+    public sealed class CarInfoViewModel : BaseViewModel
     {
-        private uint _odometer;
+        private uint _odometer = 0;
         public uint Odometer
         {
             get => _odometer;
             set => SetProperty(ref _odometer, value);
         }
 
-        private uint _odometerLPG;
+        private uint _odometerLPG = 0;
         public uint OdometerLPG
         {
             get => _odometerLPG;
             set => SetProperty(ref _odometerLPG, value);
         }
 
-        private DateTime _dateOfInstallation;
+        private DateTime _dateOfInstallation = DateTime.Now;
         public DateTime DateOfInstallation
         {
             get => _dateOfInstallation;
@@ -31,41 +27,31 @@ namespace LPGSavings.ViewModels
         }
 
         private decimal _averagePriceLPG = Models.DefaultIntroValues.LPG_PRICE;
-        public decimal AveragePriceLPG
+        public decimal AveragePriceLPG 
         {
             get => _averagePriceLPG;
             set => SetProperty(ref _averagePriceLPG, value);
         }
 
 
-        private decimal _installationCost;
+        private decimal _installationCost = 0;
         public decimal InstallationCost
         {
             get => _installationCost;
             set => SetProperty(ref _installationCost, value);
         }
-        
-        private float _systemCapacity;
-        public float SystemCapacity
+
+        private decimal _systemCapacity = 0;
+        public decimal SystemCapacity
         {
             get => _systemCapacity;
             set => SetProperty(ref _systemCapacity, value);
         }
-        private decimal _maintenanceCosts;
+        private decimal _maintenanceCosts = 0;
         public decimal MaintenanceCosts
         {
             get => _maintenanceCosts;
             set => SetProperty(ref _maintenanceCosts, value);
         }
-        public ICommand CarCreationMoveToSecondStep { get; set; }
-        public ICommand CreateCarCommand { get; set; }
-        public ICommand NavigateAfterCarCreationCommand { get; set; }
-        public IntroViewModel()
-        {
-            CreateCarCommand = new CreateCarCommand(this,new CarService(),new FuelingService(),NavigateAfterCreation);
-            CarCreationMoveToSecondStep = new CarCreationMoveToSecondStepCommand(this);
-        }
-
-        void NavigateAfterCreation() => NavigateAfterCarCreationCommand.Execute(null);
     }
 }

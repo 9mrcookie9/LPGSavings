@@ -5,6 +5,7 @@ namespace LPGSavings.Domain
 {
     public class Car
     {
+        public int CarId { get; private set; }
         public Odometer Odometer { get; private set; }
         public LPGSystem LPG { get; private set; }
         private List<ServiceEntry> _serviceHistory;
@@ -16,7 +17,7 @@ namespace LPGSavings.Domain
         private Car() {
             _fuelingHistory = new List<FuelingEntry>();
         }
-        public Car(uint distance, uint firstDistance, uint distanceLPG, uint firstDistanceLPG, decimal systemPrice, float systemCapacity,DateTime installationDate) : this()
+        public Car(uint distance, uint firstDistance, uint distanceLPG, uint firstDistanceLPG, decimal systemPrice, decimal systemCapacity,DateTime installationDate) : this()
         {
             Odometer = new Odometer(distance, firstDistance, distanceLPG, firstDistanceLPG);
             LPG = new LPGSystem(systemPrice,systemCapacity, installationDate);

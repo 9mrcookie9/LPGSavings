@@ -2,6 +2,7 @@
 {
     public class Odometer
     {
+        public int OdometerId { get; private set; }
         public uint Distance { get; private set; }
         public uint FirstDistance { get; private set; }
         public uint DistanceLPG { get; private set; }

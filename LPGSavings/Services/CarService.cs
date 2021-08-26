@@ -24,7 +24,7 @@ namespace LPGSavings.Services
             return context.Cars.First();
         }
 
-        public async Task InitializeCar(uint distance, uint distanceLPG, decimal systemPrice, float systemCapacity, DateTime installationDate)
+        public async Task InitializeCar(uint distance, uint distanceLPG, decimal systemPrice, decimal systemCapacity, DateTime installationDate)
         {
             using var context = new MainContext();
             if (context.Cars.Count() > 0)

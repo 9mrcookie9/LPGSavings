@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using LPGSavings.Utilities;
+using LPGSavings.ViewModels;
 using LPGSavings.ViewModels.Base;
 using LPGSavings.Views.IntroForms;
 using Xamarin.Forms;
@@ -10,9 +11,9 @@ namespace LPGSavings.Commands.Intro
 {
     public sealed class CarCreationMoveToSecondStepCommand : BaseAnimationCommand
     {
-        private readonly IBaseViewModel _baseViewModel;
+        private readonly ICarInfoViewModel _baseViewModel;
 
-        public CarCreationMoveToSecondStepCommand(IBaseViewModel baseViewModel)
+        public CarCreationMoveToSecondStepCommand(ICarInfoViewModel baseViewModel)
         {
             _baseViewModel = baseViewModel;
         }
@@ -26,7 +27,7 @@ namespace LPGSavings.Commands.Intro
             _baseViewModel.IsBusy = true;
             try
             {
-                var secondView = new SecondStepView() { BindingContext = _baseViewModel };
+                var secondView = new SecondStepView(new SecondStepViewModel(_baseViewModel.Car));
                 var pageHolder = App.Current.CurrentPage.MainHolder;
                 await AnimateTransition(secondView, pageHolder);
             }

@@ -15,7 +15,7 @@ namespace LPGSavings.Views.IntroForms
         public FirstStepView()
         {
             InitializeComponent();
-            BindingContext = new IntroViewModel();
+            BindingContext = new FirstStepViewModel();
         }
     }
 }

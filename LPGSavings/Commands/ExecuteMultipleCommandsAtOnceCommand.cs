@@ -11,7 +11,6 @@ namespace LPGSavings.Commands
 {
     public class ExecuteMultipleCommandsAtOnceCommand : BaseAsyncCommand
     {
-        private readonly ILogger<ExecuteMultipleCommandsAtOnceCommand> _logger = LoggerHelper.PrepareLogger<ExecuteMultipleCommandsAtOnceCommand>();
         private readonly ICommand[] _baseAsyncCommands;
         public ExecuteMultipleCommandsAtOnceCommand(params ICommand[] baseAsyncCommands)
         {

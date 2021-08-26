@@ -2,6 +2,7 @@
 {
     public class FuelingInfo
     {
+        public int FuelingInfoId { get; private set; }
         public float Liters { get; private set; }
         public decimal Price { get; private set; }
         private FuelingInfo() { }

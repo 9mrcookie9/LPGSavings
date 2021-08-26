@@ -4,6 +4,7 @@ namespace LPGSavings.Domain
 {
     public class FuelingEntry
     {
+        public int FuelingEntryId { get; private set; }
         public FuelingInfo LPGInfo { get; private set; }
         public FuelingInfo PBInfo { get; private set; }
         public uint ActualOdometerDistance { get; private set; }

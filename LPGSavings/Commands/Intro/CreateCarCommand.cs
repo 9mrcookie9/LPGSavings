@@ -9,11 +9,11 @@ namespace LPGSavings.Commands.Intro
 {
     public sealed class CreateCarCommand : BaseAsyncCommand
     {
-        private readonly IntroViewModel _viewModel;
+        private readonly ICarInfoViewModel _viewModel;
         private readonly ICarService _carService;
         private readonly IFuelingService _fuelingService;
         private readonly Action _completed;
-        public CreateCarCommand(IntroViewModel viewModel, ICarService carService, IFuelingService fuelingService, Action completed)
+        public CreateCarCommand(ICarInfoViewModel viewModel, ICarService carService, IFuelingService fuelingService, Action completed)
         {
             _viewModel = viewModel;
             _carService = carService;
@@ -31,14 +31,14 @@ namespace LPGSavings.Commands.Intro
             try
             {
                 await _carService.InitializeCar(
-                    _viewModel.Odometer,
-                    _viewModel.OdometerLPG,
-                    _viewModel.InstallationCost,
-                    _viewModel.SystemCapacity,
-                    _viewModel.DateOfInstallation);
-                if (_viewModel.OdometerLPG > 0)
+                    _viewModel.Car.Odometer,
+                    _viewModel.Car.OdometerLPG,
+                    _viewModel.Car.InstallationCost,
+                    _viewModel.Car.SystemCapacity,
+                    _viewModel.Car.DateOfInstallation);
+                if (_viewModel.Car.OdometerLPG > 0)
                 {
-                    await _fuelingService.AddEntry(_viewModel.OdometerLPG, _viewModel.AveragePriceLPG, 0, 0, _viewModel.Odometer, DateTime.Now);
+                    await _fuelingService.AddEntry(_viewModel.Car.OdometerLPG, _viewModel.Car.AveragePriceLPG, 0, 0, _viewModel.Car.Odometer, DateTime.Now);
                 }
                 _viewModel.IsBusy = false;
                 _completed?.Invoke();
