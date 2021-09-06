@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:partials="clr-namespace:LPGSavings.Views.Partials"
+            BackgroundColor="#f3f3f3"
+             x:Class="LPGSavings.Views.General.MainPage">
+    <ScrollView>
+        <Grid RowDefinitions="80,*"
+              RowSpacing="0">
+           <partials:TitleHeaderView />
+            <Grid x:Name="mainGridHolder" Grid.Row="1">
+            </Grid>
+        </Grid>
+    </ScrollView>
+
+</ContentPage>

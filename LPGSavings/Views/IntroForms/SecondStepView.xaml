@@ -2,12 +2,8 @@
 <ContentView
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:pancakeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-    xmlns:views="clr-namespace:LPGSavings.Views" 
-    xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
-    xmlns:behaviors="http://xamarin.com/schemas/2020/toolkit" 
     xmlns:components="clr-namespace:LPGSavings.Controls"
-    xmlns:effects="clr-namespace:LPGSavings.Effects"
+    xmlns:resources="clr-namespace:LPGSavings.Resx.IntroForms.SecondStep"
     xmlns:viewmodels="clr-namespace:LPGSavings.ViewModels"
     xmlns:converters="clr-namespace:LPGSavings.Converters"
     BackgroundColor="Transparent"
@@ -19,24 +15,24 @@
         </ResourceDictionary>
     </ContentView.Resources>
     <ContentView.Content>
-         <StackLayout Margin="20"
-                         >
+         <StackLayout Margin="20">
                 <Label Margin="20,30,10,30"
-                        FontSize="30">Wypełnij formularz [2/2]</Label>
+                       FontSize="30"
+                       Text="{x:Static resources:SecondStepResources.Header}"/>
              <components:MaterialEntry
-                    Placeholder="Średnia cena LPG [zł]"
+                    Placeholder="{x:Static resources:SecondStepResources.AverageLPGPriceLabel}"
                     Text="{Binding Car.AveragePriceLPG,Converter={StaticResource DecimalConverter},Mode=TwoWay}" />
              <components:MaterialEntry
                     HorizontalOptions="StartAndExpand"
-                    Placeholder="Koszt instalacji[zł]*"
+                    Placeholder="{x:Static resources:SecondStepResources.InstallationCostLabel}"
                     Text="{Binding Car.InstallationCost,Converter={StaticResource DecimalConverter},Mode=TwoWay}"/>
              <components:MaterialEntry
                     HorizontalOptions="StartAndExpand"
-                    Placeholder="Pojemność zbiornika [L]*"
+                    Placeholder="{x:Static resources:SecondStepResources.SystemCapacityLabel}"
                     Text="{Binding Car.SystemCapacity,Converter={StaticResource DecimalConverter},Mode=TwoWay}" />
              <components:MaterialEntry
                     HorizontalOptions="StartAndExpand"
-                    Placeholder="Koszt przeglądów [zł]"
+                    Placeholder="{x:Static resources:SecondStepResources.MaintenanceCostsLabel}"
                     Text="{Binding Car.MaintenanceCosts,Converter={StaticResource DecimalConverter},Mode=TwoWay}" />
              <ActivityIndicator IsEnabled="{Binding IsBusy}"
                                 IsRunning="{Binding IsBusy}"
@@ -52,7 +48,7 @@
                                              Command="{Binding CreateCarCommand}"
                                              HorizontalOptions="Center"
                                              Color="Blue"
-                                             Text="Zakończ konfigurację"/>
+                                             Text="{x:Static resources:SecondStepResources.FinishConfigurationButton}"/>
             </StackLayout>
     </ContentView.Content>
 </ContentView>

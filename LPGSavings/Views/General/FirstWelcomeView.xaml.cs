@@ -1,8 +1,8 @@
-﻿using LPGSavings.ViewModels;
+﻿using LPGSavings.ViewModels.General;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace LPGSavings.Views
+namespace LPGSavings.Views.General
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class FirstWelcomeView : ContentView

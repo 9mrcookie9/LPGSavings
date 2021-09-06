@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using LPGSavings.ViewModels;
+using LPGSavings.ViewModels.General;
 using Xamarin.Forms;
 
-namespace LPGSavings.Views
+namespace LPGSavings.Views.General
 {
     public partial class DashboardView : ContentView
     {

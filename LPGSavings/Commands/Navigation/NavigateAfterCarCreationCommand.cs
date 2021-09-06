@@ -1,6 +1,6 @@
 ﻿using LPGSavings.Utilities;
 using LPGSavings.ViewModels.Base;
-using LPGSavings.Views;
+using LPGSavings.Views.General;
 
 using System;
 using System.Threading.Tasks;

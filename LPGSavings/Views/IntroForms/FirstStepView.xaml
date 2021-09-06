@@ -3,30 +3,33 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:components="clr-namespace:LPGSavings.Controls"
              xmlns:viewmodels="clr-namespace:LPGSavings.ViewModels"
+             xmlns:resources="clr-namespace:LPGSavings.Resx.IntroForms.FirstStep"
              BackgroundColor="Transparent"
              x:DataType="viewmodels:FirstStepViewModel"
              x:Class="LPGSavings.Views.IntroForms.FirstStepView">
   <ContentView.Content>
         <StackLayout Margin="20">  
-            <Label Margin="20,30,10,30"
-                   FontSize="30">Wypełnij formularz [1/2]</Label>
-             <components:MaterialEntry
-                    Placeholder="Całkowity przebieg pojazdu [km]*"
-                    Text="{Binding Car.Odometer,Mode=TwoWay}" />
-             <components:MaterialEntry
-                    Placeholder="Przejechane na LPG [km]"
-                    Text="{Binding Car.OdometerLPG,Mode=TwoWay}" />
+            <Label
+               Margin="20,30,10,30"
+               FontSize="30"
+               Text="{x:Static resources:FirstStepResources.Header}" />
+            <components:MaterialEntry
+               Placeholder="{x:Static resources:FirstStepResources.OdometerLabel}"
+               Text="{Binding Car.Odometer,Mode=TwoWay}" />
+            <components:MaterialEntry
+               Placeholder="{x:Static resources:FirstStepResources.OdometerLPGLabel}"
+               Text="{Binding Car.OdometerLPG,Mode=TwoWay}" />
             <components:MaterialDatePicker
-                    Placeholder="Data instalacji"
-                    Format="dd.MM.yyyy"
-                    Date="{Binding Car.DateOfInstallation,Mode=TwoWay}" />
-            
-            <components:MaterialButtonWithIcon VerticalOptions="EndAndExpand"
-                                             Margin="0,40"
-                                             Command="{Binding CarCreationMoveToSecondStep}"
-                                             HorizontalOptions="Center"
-                                             Color="Blue"
-                                             Text="Pogadajmy o kosztach"/>
+               Placeholder="{x:Static resources:FirstStepResources.InstallationDateLabel}"
+               Format="dd.MM.yyyy"
+               Date="{Binding Car.DateOfInstallation,Mode=TwoWay}" />
+            <components:MaterialButtonWithIcon
+                VerticalOptions="EndAndExpand"
+                Margin="0,40"
+                Command="{Binding CarCreationMoveToSecondStep}"
+                HorizontalOptions="Center"
+                Color="Blue"
+                Text="{x:Static resources:FirstStepResources.ContinueButton}"/>
         </StackLayout>
     </ContentView.Content>
 </ContentView>

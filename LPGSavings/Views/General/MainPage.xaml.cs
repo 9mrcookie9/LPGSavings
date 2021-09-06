@@ -8,7 +8,7 @@ using LPGSavings.Services;
 using LPGSavings.Views;
 using Xamarin.Forms;
 
-namespace LPGSavings
+namespace LPGSavings.Views.General
 {
     public partial class MainPage : ContentPage
     {

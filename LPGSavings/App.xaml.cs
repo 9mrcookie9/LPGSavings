@@ -1,5 +1,5 @@
 ﻿using System;
-
+using LPGSavings.Views.General;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 

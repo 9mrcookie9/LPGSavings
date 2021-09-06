@@ -2,7 +2,7 @@
 using LPGSavings.Commands.Intro;
 using LPGSavings.ViewModels.Base;
 
-namespace LPGSavings.ViewModels
+namespace LPGSavings.ViewModels.General
 {
     public sealed class FirstWelcomeViewModel : BaseViewModel
     {
