@@ -30,6 +30,7 @@ namespace LPGSavings.Commands.Intro
             _viewModel.IsBusy = true;
             try
             {
+                await Task.Delay(50);
                 await _carService.InitializeCar(
                     _viewModel.Car.Odometer,
                     _viewModel.Car.OdometerLPG,
@@ -40,6 +41,7 @@ namespace LPGSavings.Commands.Intro
                 {
                     await _fuelingService.AddEntry(_viewModel.Car.OdometerLPG, _viewModel.Car.AveragePriceLPG, 0, 0, _viewModel.Car.Odometer, DateTime.Now);
                 }
+                ConfigurationHelper.CreateInstance().SetCarCreated(true);
                 _viewModel.IsBusy = false;
                 _completed?.Invoke();
             }

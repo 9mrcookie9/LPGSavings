@@ -7,12 +7,13 @@
         <ResourceDictionary>
             <x:String x:Key="LottiePigMoney">pig-money.json</x:String>
             <x:String x:Key="LottieNext">next.json</x:String>
+            <x:String x:Key="ChevronRight">&#xf054;</x:String>
             <Color x:Key="PrimaryColorDark">#1976D2</Color>
             <Color x:Key="PrimaryColor">#2196F3</Color>
             <Style TargetType="controls:MaterialEntry">
                 <Setter Property="BackgroundColor" Value="#f3f3f3" />
             </Style>
-              <Style TargetType="controls:MaterialDatePicker">
+            <Style TargetType="controls:MaterialDatePicker">
                 <Setter Property="BackgroundColor" Value="#f3f3f3" />
             </Style>
         </ResourceDictionary>

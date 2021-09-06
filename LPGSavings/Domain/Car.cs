@@ -29,7 +29,7 @@ namespace LPGSavings.Domain
             _serviceHistory = new List<ServiceEntry>(_serviceHistory) { serviceEntry };
         }
 
-        public void AddFueling(float litersLPG, decimal priceLPG, float litersPB, decimal pricePB, uint odometer, DateTime dateTime)
+        public void AddFueling(decimal litersLPG, decimal priceLPG, decimal litersPB, decimal pricePB, uint odometer, DateTime dateTime)
         {
             var fuelingEntry = new FuelingEntry(litersLPG, priceLPG, litersPB, pricePB, odometer, dateTime);
             _fuelingHistory = new List<FuelingEntry>(_fuelingHistory) { fuelingEntry };

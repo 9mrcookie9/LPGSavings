@@ -12,7 +12,6 @@ namespace LPGSavings.Domain.Contexts
         public DbSet<ServiceEntry> ServiceHistory { get; set; }
         public MainContext()
         {
-            SQLitePCL.Batteries_V2.Init();
 
             this.Database.EnsureCreated();
         }

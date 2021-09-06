@@ -7,7 +7,7 @@ namespace LPGSavings.Services
 {
     public interface IFuelingService
     {
-        Task AddEntry(float litersLPG, decimal priceLPG, float litersPB, decimal pricePB, uint odometer, DateTime dateTime);
+        Task AddEntry(decimal litersLPG, decimal priceLPG, decimal litersPB, decimal pricePB, uint odometer, DateTime dateTime);
         IReadOnlyList<FuelingEntry> GetAll();
     }
 }

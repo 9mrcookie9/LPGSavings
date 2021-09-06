@@ -31,6 +31,10 @@
     <Folder Include="Domain\Contexts\" />
     <Folder Include="Commands\Intro\" />
     <Folder Include="Converters\" />
+    <Folder Include="ViewModels\IntroForms\" />
+    <Folder Include="Views\Insert\" />
+    <Folder Include="Views\Read\" />
+    <Folder Include="ViewModels\Insert\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Assets\Fonts\" />
@@ -46,6 +50,10 @@
     <None Remove="Commands\Intro\" />
     <None Remove="Xamarin.Forms.CustomControls" />
     <None Remove="Converters\" />
+    <None Remove="ViewModels\IntroForms\" />
+    <None Remove="Views\InsertData\" />
+    <None Remove="Views\Read\" />
+    <None Remove="ViewModels\Insert\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Assets\Animations\pig-money.json" />

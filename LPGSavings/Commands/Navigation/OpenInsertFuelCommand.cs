@@ -1,18 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
+
 using LPGSavings.Utilities;
-using LPGSavings.ViewModels;
-using LPGSavings.Views.IntroForms;
-using Xamarin.Forms;
+using LPGSavings.ViewModels.Base;
+using LPGSavings.Views.Insert;
 
 namespace LPGSavings.Commands.Intro
 {
-    public sealed class CarCreationMoveToSecondStepCommand : BaseAnimationCommand
+    public sealed class OpenInsertFuelCommand : BaseAsyncCommand
     {
-        private readonly ICarInfoViewModel _baseViewModel;
+        private readonly IBaseViewModel _baseViewModel;
 
-        public CarCreationMoveToSecondStepCommand(ICarInfoViewModel baseViewModel)
+        public OpenInsertFuelCommand(IBaseViewModel baseViewModel)
         {
             _baseViewModel = baseViewModel;
         }
@@ -26,9 +25,8 @@ namespace LPGSavings.Commands.Intro
             _baseViewModel.IsBusy = true;
             try
             {
-                var secondView = new SecondStepView(new SecondStepViewModel(_baseViewModel.Car));
-                var pageHolder = App.Current.CurrentPage.MainHolder;
-                await AnimateTransition(secondView, pageHolder);
+                var page = new InsertFuelingPage();
+                await App.Current.CurrentPage.Navigation.PushModalAsync(page);
             }
             catch (Exception ex)
             {

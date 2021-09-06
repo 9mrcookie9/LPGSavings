@@ -10,7 +10,7 @@ namespace LPGSavings.Services
 {
     public class FuelingService : IFuelingService
     {
-        public async Task AddEntry(float litersLPG, decimal priceLPG, float litersPB, decimal pricePB, uint odometer, DateTime dateTime)
+        public async Task AddEntry(decimal litersLPG, decimal priceLPG, decimal litersPB, decimal pricePB, uint odometer, DateTime dateTime)
         {
             using var context = new MainContext();
             var car = context.Cars.Include(a => a.FuelingHistory).First();

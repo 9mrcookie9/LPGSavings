@@ -3,10 +3,10 @@
     public class FuelingInfo
     {
         public int FuelingInfoId { get; private set; }
-        public float Liters { get; private set; }
+        public decimal Liters { get; private set; }
         public decimal Price { get; private set; }
         private FuelingInfo() { }
-        public FuelingInfo(float liters, decimal price)
+        public FuelingInfo(decimal liters, decimal price)
         {
             Liters = liters;
             Price = price;

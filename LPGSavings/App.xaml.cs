@@ -15,5 +15,10 @@ namespace LPGSavings
 
             MainPage = CurrentPage = new MainPage();
         }
+
+        protected override void OnStart()
+        {
+            base.OnStart();
+        }
     }
 }

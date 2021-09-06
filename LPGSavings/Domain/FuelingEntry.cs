@@ -11,7 +11,7 @@ namespace LPGSavings.Domain
         public DateTime DateOfOccure { get; private set; }
 
         private FuelingEntry() { }
-        public FuelingEntry(float litersLPG, decimal priceLPG, float litersPB, decimal pricePB,uint odometer, DateTime dateTime)
+        public FuelingEntry(decimal litersLPG, decimal priceLPG, decimal litersPB, decimal pricePB,uint odometer, DateTime dateTime)
         {
             if (litersLPG > 0 || priceLPG > 0)
             {
