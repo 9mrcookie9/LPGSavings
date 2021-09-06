@@ -24,6 +24,7 @@ namespace LPGSavings.iOS
         {
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
+            SQLitePCL.Batteries_V2.Init();
 
             return base.FinishedLaunching(app, options);
         }
