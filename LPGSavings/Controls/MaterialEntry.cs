@@ -29,7 +29,6 @@ namespace LPGSavings.Controls
             get => GetValue(PlaceholderProperty) as string;
             set => SetValue(PlaceholderProperty, value);
         }
-        private static Color PrimaryColor = Color.FromHex("#2196F3");
         private Entry _entry;
         private Label _header;
         private Grid _grid;
@@ -41,7 +40,8 @@ namespace LPGSavings.Controls
             _header = new Label
             {
                 FontSize = 15,
-                TextColor = PrimaryColor,
+                TextColor = (Color)App.Current.Resources["PrimaryColor"],
+                BackgroundColor = Color.Transparent,
                 HorizontalOptions = LayoutOptions.Start,
                 VerticalOptions = LayoutOptions.Start,
                 Margin = new Thickness(20, -10, 0, 0),
@@ -58,10 +58,11 @@ namespace LPGSavings.Controls
             _frame = new Frame
             {
                 Padding = new Thickness(10,4),
-                BorderColor = PrimaryColor,
+                BorderColor = (Color)App.Current.Resources["PrimaryColor"],
                 HasShadow = false,
                 Content = _entry,
-                CornerRadius = 10
+                CornerRadius = 10,
+                BackgroundColor = Color.Transparent
             };
             Content = _grid= new Grid()
             {
@@ -69,7 +70,8 @@ namespace LPGSavings.Controls
                 Children = {
                     _frame,
                     _header
-                }
+                },
+                BackgroundColor = Color.Transparent
             };
 
             _frame.SetBinding(Frame.BackgroundColorProperty, new Binding(nameof(BackgroundColor), source: this));
