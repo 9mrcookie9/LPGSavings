@@ -4,7 +4,8 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using LPGSavings.Services;
+using LPGSavings.Views;
 using Xamarin.Forms;
 
 namespace LPGSavings
@@ -14,6 +15,14 @@ namespace LPGSavings
         public MainPage()
         {
             InitializeComponent();
+            if (ConfigurationHelper.CreateInstance().IsCarCreated())
+            {
+                mainGridHolder.Children.Add(new DashboardView());
+            }
+            else
+            {
+                mainGridHolder.Children.Add(new FirstWelcomeView());
+            }
         }
 
         public Grid MainHolder => mainGridHolder;

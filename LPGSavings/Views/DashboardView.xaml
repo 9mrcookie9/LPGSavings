@@ -2,42 +2,44 @@
 <ContentView
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="LPGSavings.Views.DashboardView">
+    xmlns:viewmodels="clr-namespace:LPGSavings.ViewModels" xmlns:controls="clr-namespace:LPGSavings.Controls"
+    x:Class="LPGSavings.Views.DashboardView"
+    x:DataType="viewmodels:DashboardViewModel">
     <ContentView.Content>
-        <StackLayout>
-            <Frame BackgroundColor="#2196F3"
-                    Padding="24"
-                    CornerRadius="0">
-                <Label Text="Witaj w dzienniku inwestycji LPG!"
-                        HorizontalTextAlignment="Center"
-                        TextColor="White"
-                        FontSize="30"/>
-            </Frame>
-        
-            <Label FontSize="16"
-                    TextType="Html"
-                    Padding="20,10,20,0">
-                <![CDATA[
-                Jesteś w <b><u>30%</u></b> inwestycji. W tym tempie instalacja zacznie przynosić Ci <span style="color: #006400;"> zyski  za <b><u>350<u> dni</b> </span>.
-                ]]>
-            </Label>
-                <Label FontSize="15"
-                    TextType="Html"
-                    Padding="20,10,20,0">
-                <![CDATA[ 
-                Do tej pory na serwisy wydałeś: <b><u>0</u> zł</b>  <br/>
-                Na paliwo wydałeś <b><u>250</u>  zł </b>(zaoszczędziłeś 200 zł).
-                ]]>
-            </Label>
-            <Button Text="Dodaj tankowanie"
-                    Margin="20"/>
-            <Button Text="Dodaj serwis / usterkę"
-                    HorizontalOptions="End"/>
-            <Grid ColumnDefinitions="*,*">
-                <Button Text="Pokaż tankowania" />
-                <Button Grid.Column="1"
-                        Text="Pokaż serwisy" />
-            </Grid>
-        </StackLayout>
+        <ScrollView>
+            <StackLayout Margin="0,100,0,0">
+            
+                <Label FontSize="16"
+                        TextType="Html"
+                        Padding="20,10,20,0">
+                    <![CDATA[
+                    Jesteś w <b><u>30%</u></b> inwestycji. W tym tempie instalacja zacznie przynosić Ci <span style="color: #006400;"> zyski  za <b><u>350<u> dni</b> </span>.
+                    ]]>
+                </Label>
+                    <Label FontSize="15"
+                        TextType="Html"
+                        Padding="20,10,20,0">
+                    <![CDATA[ 
+                    Do tej pory na serwisy wydałeś: <b><u>0</u> zł</b>  <br/>
+                    Na paliwo wydałeś <b><u>250</u>  zł </b>(zaoszczędziłeś 200 zł).
+                    ]]>
+                </Label>
+                <controls:MaterialButton Text="Dodaj tankowanie"
+                        Command="{Binding OpenInsertFuelCommand}"
+                        Margin="20,20,20,10"/>
+                <controls:MaterialButton Text="Dodaj serwis / usterkę"
+                        Command="{Binding OpenInsertServiceCommand}"
+                        Margin="20,0"/>
+                <Grid ColumnDefinitions="*,*"
+                      Margin="20,20,20,0"
+                      ColumnSpacing="10">
+                    <controls:MaterialButtonWithIcon Text="Pokaż tankowania"
+                            Command="{Binding OpenFuelingHistoryCommand}"/>
+                    <controls:MaterialButtonWithIcon Grid.Column="1"
+                            Text="Pokaż serwisy"
+                            Command="{Binding OpenServiceHistoryCommand}"/>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
     </ContentView.Content>
 </ContentView>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using LPGSavings.ViewModels;
 using Xamarin.Forms;
 
 namespace LPGSavings.Views
@@ -9,6 +10,7 @@ namespace LPGSavings.Views
         public DashboardView()
         {
             InitializeComponent();
+            BindingContext = new DashboardViewModel();
         }
     }
 }

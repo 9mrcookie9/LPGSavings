@@ -46,29 +46,13 @@
                                 WidthRequest="40"
                                 VerticalOptions="CenterAndExpand"
                                 HorizontalOptions="Center" />
-             <pancakeview:PancakeView Padding="14,8"
-                                         VerticalOptions="EndAndExpand"
-                                         behaviors:TouchEffect.NativeAnimation="True"
-                                         behaviors:TouchEffect.Command="{Binding CreateCarCommand}"
-                                         HorizontalOptions="Center" 
-                                         CornerRadius="25">
-                    <pancakeview:PancakeView.Border>
-                        <pancakeview:Border Thickness="1"
-                                            Color="{StaticResource PrimaryColorDark}" />
-                    </pancakeview:PancakeView.Border>
-                    <StackLayout Orientation="Horizontal"
-                                 HorizontalOptions="Center">
-                        <Label VerticalTextAlignment="Center"
-                               FontSize="13"
-                               TextColor="{StaticResource PrimaryColorDark}"
-                               FontAttributes="Bold">Zakończ konfigurację</Label>
-                        <Label Text="&#xf054;" 
-                               FontSize="15"
-                               TextColor="{StaticResource PrimaryColorDark}"
-                               VerticalTextAlignment="Center"
-                               FontFamily="fas"/>
-                    </StackLayout>
-                </pancakeview:PancakeView>
+            
+            <components:MaterialButtonWithIcon VerticalOptions="EndAndExpand"
+                                             Margin="0,40"
+                                             Command="{Binding CreateCarCommand}"
+                                             HorizontalOptions="Center"
+                                             Color="Blue"
+                                             Text="Zakończ konfigurację"/>
             </StackLayout>
     </ContentView.Content>
 </ContentView>
