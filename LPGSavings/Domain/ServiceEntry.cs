@@ -8,10 +8,10 @@ namespace LPGSavings.Domain
         public ServiceType ServiceType { get; private set; }
         public DateTime DateOfOccure { get; private set; }
         public uint OdometerValue { get; private set; }
-        public decimal Price { get; private set; }
+        public float Price { get; private set; }
         public string Description { get; set; }
 
-        public ServiceEntry(ServiceType serviceType, DateTime dateOfOccure, uint odometerValue, decimal price, string description)
+        public ServiceEntry(ServiceType serviceType, DateTime dateOfOccure, uint odometerValue, float price, string description)
         {
             ServiceType = serviceType;
             DateOfOccure = dateOfOccure;

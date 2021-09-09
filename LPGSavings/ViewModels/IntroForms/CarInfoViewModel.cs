@@ -28,10 +28,10 @@ namespace LPGSavings.ViewModels
             set => SetProperty(ref _dateOfInstallation, value);
         }
 
-        public ValidatableObject<decimal> AveragePriceLPGValidatable { get; } = new ValidatableObject<decimal>(
+        public ValidatableObject<float> AveragePriceLPGValidatable { get; } = new ValidatableObject<float>(
             Models.DefaultIntroValues.LPG_PRICE
-        ).AddRule(IsGreaterThanZero<decimal>.Create());
-        public decimal AveragePriceLPG 
+        ).AddRule(IsGreaterThanZero<float>.Create());
+        public float AveragePriceLPG 
         {
             get => AveragePriceLPGValidatable.Value;
             set {
@@ -42,16 +42,16 @@ namespace LPGSavings.ViewModels
         }
 
 
-        private decimal _installationCost = 0;
-        public decimal InstallationCost
+        private float _installationCost = 0;
+        public float InstallationCost
         {
             get => _installationCost;
             set => SetProperty(ref _installationCost, value);
         }
 
-        public ValidatableObject<decimal> SystemCapacityValidatable { get; } = new ValidatableObject<decimal>(0)
-            .AddRule(IsGreaterThanZero<decimal>.Create());
-        public decimal SystemCapacity
+        public ValidatableObject<float> SystemCapacityValidatable { get; } = new ValidatableObject<float>(0)
+            .AddRule(IsGreaterThanZero<float>.Create());
+        public float SystemCapacity
         {
             get => SystemCapacityValidatable.Value;
             set {
@@ -60,8 +60,8 @@ namespace LPGSavings.ViewModels
                 OnPropertyChanged(nameof(IsValid));
             }
         }
-        private decimal _maintenanceCosts = 0;
-        public decimal MaintenanceCosts
+        private float _maintenanceCosts = 0;
+        public float MaintenanceCosts
         {
             get => _maintenanceCosts;
             set => SetProperty(ref _maintenanceCosts, value);

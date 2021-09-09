@@ -7,8 +7,8 @@ namespace LPGSavings.Models.Forms
 {
     public class FuelingForm : BindableObject
     {
-        private decimal _litersLPG;
-        public decimal LitersLPG
+        private float _litersLPG = 0.0f;
+        public float LitersLPG
         {
             get => _litersLPG;
             set {
@@ -17,9 +17,9 @@ namespace LPGSavings.Models.Forms
                 OnPropertyChanged(nameof(LitersLPG));
             }
         }
-        public ValidatableObject<decimal> PriceLPGValidatable { get; } = new ValidatableObject<decimal>(Models.DefaultIntroValues.LPG_PRICE)
-            .AddRule(IsGreaterThanZero<decimal>.Create());
-        public decimal PriceLPG
+        public ValidatableObject<float> PriceLPGValidatable { get; } = new ValidatableObject<float>(Models.DefaultIntroValues.LPG_PRICE)
+            .AddRule(IsGreaterThanZero<float>.Create());
+        public float PriceLPG
         {
             get => PriceLPGValidatable.Value;
             set
@@ -29,8 +29,8 @@ namespace LPGSavings.Models.Forms
                 OnPropertyChanged(nameof(IsValid));
             }
         }
-        private decimal _litersPB;
-        public decimal LitersPB
+        private float _litersPB;
+        public float LitersPB
         {
             get => _litersPB;
             set
@@ -40,8 +40,8 @@ namespace LPGSavings.Models.Forms
                 OnPropertyChanged(nameof(LitersPB));
             }
         }
-        private decimal _pricePB = Models.DefaultIntroValues.PB_PRICE;
-        public decimal PricePB
+        private float _pricePB = Models.DefaultIntroValues.PB_PRICE;
+        public float PricePB
         {
             get => _pricePB;
             set

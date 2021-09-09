@@ -6,8 +6,8 @@ namespace LPGSavings.Services
 {
     public interface ICarService
     {
-        Task InitializeCar(uint distance, uint distanceLPG, decimal systemPrice, decimal systemCapacity, DateTime installationDate);
+        Task InitializeCar(uint distance, uint distanceLPG, float systemPrice, float systemCapacity, DateTime installationDate);
         Task<Car> GetCar();
-        Task AddService(ServiceType serviceType, DateTime dateOfOccure, uint odometerValue, decimal price, string description);
+        Task AddService(ServiceType serviceType, DateTime dateOfOccure, uint odometerValue, float price, string description);
     }
 }

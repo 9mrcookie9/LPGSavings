@@ -13,7 +13,7 @@
     x:Class="LPGSavings.Views.Insert.InsertFuelingPage">
      <ContentPage.Resources>
         <ResourceDictionary>
-            <converters:DecimalConverter x:Key="DecimalConverter" />
+            <converters:FloatConverter x:Key="FloatConverter" />
             <xct:IsNotNullOrEmptyConverter x:Key="IsNotNullOrEmptyConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -52,21 +52,24 @@
                 <components:MaterialEntry
                     Placeholder="{x:Static resources:InsertFuelingResource.OdometerLabel}"
                     BackgroundColor="#f3f3f3"
-                    Text="{Binding Form.Odometer,Mode=TwoWay}" />
+                    Text="{Binding Form.Odometer,Mode=TwoWay}"
+                    Keyboard="Numeric"/>
                 <Label  Style="{StaticResource ErrorLabel}"
                         Text="{Binding Form.OdometerValidatable.Errors,Converter={StaticResource FirstValidationErrorConverter}}"
                         IsVisible="{Binding Form.OdometerValidatable.Errors,Converter={StaticResource ErrorsToVisibilityConverter}}"/>
           
                 <components:MaterialEntry
                         Placeholder="{x:Static resources:InsertFuelingResource.PriceLPGLabel}"
-                        Text="{Binding Form.PriceLPG,Converter={StaticResource DecimalConverter},Mode=TwoWay}" />
+                        Text="{Binding Form.PriceLPG,Mode=TwoWay}"
+                        Keyboard="Numeric"/>
                 <Label  Style="{StaticResource ErrorLabel}"
                         Text="{Binding Form.PriceLPGValidatable.Errors,Converter={StaticResource FirstValidationErrorConverter}}"
                         IsVisible="{Binding Form.PriceLPGValidatable.Errors,Converter={StaticResource ErrorsToVisibilityConverter}}"/>
           
                 <components:MaterialEntry
                         Placeholder="{x:Static resources:InsertFuelingResource.LitersLPGLabel}"
-                        Text="{Binding Form.LitersLPG,Converter={StaticResource DecimalConverter},Mode=TwoWay}" />
+                        Text="{Binding Form.LitersLPG,Mode=TwoWay}"
+                        Keyboard="Numeric"/>
                 <Grid>
                     <BoxView HeightRequest="1"
                              Margin="0,10"
@@ -82,10 +85,10 @@
                 <components:MaterialEntry
                         Margin="20,20,20,0"
                         Placeholder="{x:Static resources:InsertFuelingResource.PricePBLabel}"
-                        Text="{Binding Form.PricePB,Converter={StaticResource DecimalConverter},Mode=TwoWay}" />
+                        Text="{Binding Form.PricePB,Converter={StaticResource FloatConverter},Mode=TwoWay}" />
                 <components:MaterialEntry
                         Placeholder="{x:Static resources:InsertFuelingResource.LitersPBLabel}"
-                        Text="{Binding Form.LitersPB,Converter={StaticResource DecimalConverter},Mode=TwoWay}" />
+                        Text="{Binding Form.LitersPB,Converter={StaticResource FloatConverter},Mode=TwoWay}" />
                 <Grid>
                     <BoxView HeightRequest="1"
                              Margin="0,10"

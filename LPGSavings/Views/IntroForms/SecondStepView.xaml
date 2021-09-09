@@ -9,11 +9,6 @@
     BackgroundColor="Transparent"
     x:DataType="viewmodels:SecondStepViewModel"
     x:Class="LPGSavings.Views.IntroForms.SecondStepView">
-    <ContentView.Resources>
-        <ResourceDictionary>
-             <converters:DecimalConverter x:Key="DecimalConverter" />
-        </ResourceDictionary>
-    </ContentView.Resources>
     <ContentView.Content>
          <StackLayout Margin="20">
                 <Label Margin="20,30,10,30"
@@ -21,25 +16,25 @@
                        Text="{x:Static resources:SecondStepResources.Header}"/>
              <components:MaterialEntry
                     Placeholder="{x:Static resources:SecondStepResources.AverageLPGPriceLabel}"
-                    Text="{Binding Car.AveragePriceLPG,Converter={StaticResource DecimalConverter},Mode=TwoWay}" />
+                    Text="{Binding Car.AveragePriceLPG,Converter={StaticResource FloatConverter},Mode=TwoWay}" />
              <Label Style="{StaticResource ErrorLabel}"
                     Text="{Binding Car.AveragePriceLPGValidatable.Errors,Converter={StaticResource FirstValidationErrorConverter}}"
                     IsVisible="{Binding Car.AveragePriceLPGValidatable.Errors,Converter={StaticResource ErrorsToVisibilityConverter}}"/>
              <components:MaterialEntry
                     HorizontalOptions="StartAndExpand"
                     Placeholder="{x:Static resources:SecondStepResources.InstallationCostLabel}"
-                    Text="{Binding Car.InstallationCost,Converter={StaticResource DecimalConverter},Mode=TwoWay}"/>
+                    Text="{Binding Car.InstallationCost,Converter={StaticResource FloatConverter},Mode=TwoWay}"/>
              <components:MaterialEntry
                     HorizontalOptions="StartAndExpand"
                     Placeholder="{x:Static resources:SecondStepResources.SystemCapacityLabel}"
-                    Text="{Binding Car.SystemCapacity,Converter={StaticResource DecimalConverter},Mode=TwoWay}" />
+                    Text="{Binding Car.SystemCapacity,Converter={StaticResource FloatConverter},Mode=TwoWay}" />
              <Label Style="{StaticResource ErrorLabel}"
                     Text="{Binding Car.SystemCapacityValidatable.Errors,Converter={StaticResource FirstValidationErrorConverter}}"
                     IsVisible="{Binding Car.SystemCapacityValidatable.Errors,Converter={StaticResource ErrorsToVisibilityConverter}}"/>
              <components:MaterialEntry
                     HorizontalOptions="StartAndExpand"
                     Placeholder="{x:Static resources:SecondStepResources.MaintenanceCostsLabel}"
-                    Text="{Binding Car.MaintenanceCosts,Converter={StaticResource DecimalConverter},Mode=TwoWay}" />
+                    Text="{Binding Car.MaintenanceCosts,Converter={StaticResource FloatConverter},Mode=TwoWay}" />
              <ActivityIndicator IsEnabled="{Binding IsBusy}"
                                 IsRunning="{Binding IsBusy}"
                                 IsVisible="{Binding IsBusy}"
