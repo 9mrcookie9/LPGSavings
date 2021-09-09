@@ -13,7 +13,8 @@
     x:Class="LPGSavings.Views.Insert.InsertFuelingPage">
      <ContentPage.Resources>
         <ResourceDictionary>
-             <converters:DecimalConverter x:Key="DecimalConverter" />
+            <converters:DecimalConverter x:Key="DecimalConverter" />
+            <xct:IsNotNullOrEmptyConverter x:Key="IsNotNullOrEmptyConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
@@ -52,9 +53,17 @@
                     Placeholder="{x:Static resources:InsertFuelingResource.OdometerLabel}"
                     BackgroundColor="#f3f3f3"
                     Text="{Binding Form.Odometer,Mode=TwoWay}" />
+                <Label  Style="{StaticResource ErrorLabel}"
+                        Text="{Binding Form.OdometerValidatable.Errors,Converter={StaticResource FirstValidationErrorConverter}}"
+                        IsVisible="{Binding Form.OdometerValidatable.Errors,Converter={StaticResource ErrorsToVisibilityConverter}}"/>
+          
                 <components:MaterialEntry
                         Placeholder="{x:Static resources:InsertFuelingResource.PriceLPGLabel}"
                         Text="{Binding Form.PriceLPG,Converter={StaticResource DecimalConverter},Mode=TwoWay}" />
+                <Label  Style="{StaticResource ErrorLabel}"
+                        Text="{Binding Form.PriceLPGValidatable.Errors,Converter={StaticResource FirstValidationErrorConverter}}"
+                        IsVisible="{Binding Form.PriceLPGValidatable.Errors,Converter={StaticResource ErrorsToVisibilityConverter}}"/>
+          
                 <components:MaterialEntry
                         Placeholder="{x:Static resources:InsertFuelingResource.LitersLPGLabel}"
                         Text="{Binding Form.LitersLPG,Converter={StaticResource DecimalConverter},Mode=TwoWay}" />
@@ -94,6 +103,16 @@
                         Placeholder="{x:Static resources:InsertFuelingResource.DateLabel}"
                         Format="dd.MM.yyyy"
                         Date="{Binding Form.DateOfOccure,Mode=TwoWay}" />
+
+                 <Label  Style="{StaticResource ErrorLabel}"
+                         Text="{Binding Form.LitersRequired}"
+                         />
+
+                <ActivityIndicator IsRunning="{Binding IsBusy}"
+                                   IsEnabled="{Binding IsBusy}"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="CenterAndExpand"
+                                   Color="{StaticResource PrimaryColor}"/>
                 <components:MaterialButtonWithIcon Text="{x:Static resources:InsertFuelingResource.SaveButton}"
                                                    Margin="20"
                                                    HorizontalOptions="FillAndExpand"

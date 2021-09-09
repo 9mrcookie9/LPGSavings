@@ -54,7 +54,10 @@ namespace LPGSavings.Validators.Base
             _errors = new List<string>();
             Validations = new List<IValidationRule<T>>();
         }
-
+        public ValidatableObject(T value) : this()
+        {
+            _value = value;
+        }
         public bool Validate()
         {
             Errors.Clear();

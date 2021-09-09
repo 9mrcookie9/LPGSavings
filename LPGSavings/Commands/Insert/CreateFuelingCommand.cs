@@ -12,28 +12,37 @@ namespace LPGSavings.Commands.Insert
     {
         private readonly IBaseViewModel _baseViewModel;
         private readonly IFuelingService _fuelingService;
-        public CreateFuelingCommand(IBaseViewModel insertFuelingViewModel, IFuelingService fuelingService)
+        private readonly FuelingForm _fuelingForm;
+        private readonly Action _saved;
+        public CreateFuelingCommand(IBaseViewModel insertFuelingViewModel, IFuelingService fuelingService, FuelingForm fuelingForm, Action saved)
         {
             _baseViewModel = insertFuelingViewModel;
             _fuelingService = fuelingService;
+            _fuelingForm = fuelingForm;
+            _fuelingForm.PropertyChanged += RaiseSelfCanExecuteChanged;
+            _saved = saved;
         }
+
+        private void RaiseSelfCanExecuteChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e) => RaiseCanExecuteChanged();
+
+        public sealed override bool CanExecute(object parameter) => _fuelingForm.IsValid;
 
         public sealed override async Task ExecuteAsync(object parameter = null)
         {
-            if (!_baseViewModel.IsBusy && parameter is FuelingForm form)
+            if (!_baseViewModel.IsBusy )
             {
                 _baseViewModel.IsBusy = true;
+                await Task.Delay(100); //Give animation time to start.
                 try
                 {
-                    await _fuelingService.AddEntry(form);
+                    await _fuelingService.AddEntry(_fuelingForm);
+                    _baseViewModel.IsBusy = false;
+                    _saved?.Invoke();
                 }
                 catch (Exception ex)
                 {
-                    this._logger.LogException(ex);
-                }
-                finally
-                {
                     _baseViewModel.IsBusy = false;
+                    this._logger.LogException(ex);
                 }
             }
         }

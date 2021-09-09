@@ -19,9 +19,14 @@ namespace LPGSavings.Commands.Intro
             _carService = carService;
             _fuelingService = fuelingService;
             _completed = completed;
+            _viewModel.Car.PropertyChanged += UpdateSelfCanExecute;
         }
 
-        public override async Task ExecuteAsync(object parameter = null)
+        private void UpdateSelfCanExecute(object sender, System.ComponentModel.PropertyChangedEventArgs e) => this.RaiseCanExecuteChanged();
+
+        public sealed override bool CanExecute(object parameter) => _viewModel.Car.IsValid;
+
+        public sealed override async Task ExecuteAsync(object parameter = null)
         {
             if (_viewModel.IsBusy)
             {

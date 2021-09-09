@@ -18,7 +18,7 @@ namespace LPGSavings.ViewModels.Insert
         public InsertFuelingViewModel()
         {
             CloseModalCommand = new CloseModalCommand(this);
-            AddFuelingCommand = new CreateFuelingCommand(this,new FuelingService()); //TODO: Change me
+            AddFuelingCommand = new CreateFuelingCommand(this,new FuelingService(), Form,() => CloseModalCommand.Execute(null));
         }
     }
 }

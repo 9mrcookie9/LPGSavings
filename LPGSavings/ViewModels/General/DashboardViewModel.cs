@@ -10,6 +10,7 @@ namespace LPGSavings.ViewModels.General
         public ICommand OpenInsertServiceCommand { get; }
         public ICommand OpenFuelingHistoryCommand { get; }
         public ICommand OpenServiceHistoryCommand { get; }
+
         public DashboardViewModel()
         {
             OpenInsertFuelCommand = new OpenInsertFuelCommand(this);

@@ -1,4 +1,6 @@
 ﻿using System;
+using LPGSavings.Validators.Base;
+using LPGSavings.Validators.Rules;
 using Xamarin.Forms;
 
 namespace LPGSavings.Models.Forms
@@ -11,17 +13,20 @@ namespace LPGSavings.Models.Forms
             get => _litersLPG;
             set {
                 _litersLPG = value;
+                OnPropertyChanged(nameof(LitersRequired));
                 OnPropertyChanged(nameof(LitersLPG));
             }
         }
-        private decimal _priceLPG = Models.DefaultIntroValues.LPG_PRICE;
+        public ValidatableObject<decimal> PriceLPGValidatable { get; } = new ValidatableObject<decimal>(Models.DefaultIntroValues.LPG_PRICE)
+            .AddRule(IsGreaterThanZero<decimal>.Create());
         public decimal PriceLPG
         {
-            get => _priceLPG;
+            get => PriceLPGValidatable.Value;
             set
             {
-                _priceLPG = value;
+                PriceLPGValidatable.Value = value;
                 OnPropertyChanged(nameof(PriceLPG));
+                OnPropertyChanged(nameof(IsValid));
             }
         }
         private decimal _litersPB;
@@ -31,6 +36,7 @@ namespace LPGSavings.Models.Forms
             set
             {
                 _litersPB = value;
+                OnPropertyChanged(nameof(LitersRequired));
                 OnPropertyChanged(nameof(LitersPB));
             }
         }
@@ -43,18 +49,20 @@ namespace LPGSavings.Models.Forms
                 _pricePB = value;
                 OnPropertyChanged(nameof(PricePB));
             }
-        }
-        private uint _odometer;
+        } 
+        public ValidatableObject<uint> OdometerValidatable { get; } = new ValidatableObject<uint>()
+            .AddRule(IsGreaterThanZero<uint>.Create());
         public uint Odometer
         {
-            get => _odometer;
+            get => OdometerValidatable.Value;
             set
             {
-                _odometer = value;
+                OdometerValidatable.Value = value;
                 OnPropertyChanged(nameof(Odometer));
+                OnPropertyChanged(nameof(IsValid));
             }
         }
-        private DateTime _dateOfOccure;
+        private DateTime _dateOfOccure = DateTime.Now;
         public DateTime DateOfOccure
         {
             get => _dateOfOccure;
@@ -62,6 +70,18 @@ namespace LPGSavings.Models.Forms
             {
                 _dateOfOccure = value;
                 OnPropertyChanged(nameof(DateOfOccure));
+            }
+        }
+        public string LitersRequired => LitersLPG == 0 && LitersPB == 0 ? "Uzupełnij litry!" : null;
+        public bool IsValid
+        {
+            get {
+                if(LitersLPG == 0 && LitersPB == 0)
+                {
+                    OnPropertyChanged(nameof(LitersRequired));
+                    return false;
+                }
+                return OdometerValidatable.IsValid && PriceLPGValidatable.IsValid;
             }
         }
     }

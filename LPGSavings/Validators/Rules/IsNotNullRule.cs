@@ -5,6 +5,7 @@ namespace LPGSavings.Validators.Rules
 {
     public class IsNotNullRule<T> : IValidationRule<T>, IValidationMessage
     {
+        public static IValidationRule<T> Create() => new IsNotNullRule<T>();
         public string ValidationMessage => LPGSavings.Resx.Validators.IsNotNullRule.IsNotNullRuleResource.Message;
 
         public bool Check(T value)

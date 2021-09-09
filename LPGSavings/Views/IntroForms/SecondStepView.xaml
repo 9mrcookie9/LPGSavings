@@ -22,6 +22,9 @@
              <components:MaterialEntry
                     Placeholder="{x:Static resources:SecondStepResources.AverageLPGPriceLabel}"
                     Text="{Binding Car.AveragePriceLPG,Converter={StaticResource DecimalConverter},Mode=TwoWay}" />
+             <Label Style="{StaticResource ErrorLabel}"
+                    Text="{Binding Car.AveragePriceLPGValidatable.Errors,Converter={StaticResource FirstValidationErrorConverter}}"
+                    IsVisible="{Binding Car.AveragePriceLPGValidatable.Errors,Converter={StaticResource ErrorsToVisibilityConverter}}"/>
              <components:MaterialEntry
                     HorizontalOptions="StartAndExpand"
                     Placeholder="{x:Static resources:SecondStepResources.InstallationCostLabel}"
@@ -30,6 +33,9 @@
                     HorizontalOptions="StartAndExpand"
                     Placeholder="{x:Static resources:SecondStepResources.SystemCapacityLabel}"
                     Text="{Binding Car.SystemCapacity,Converter={StaticResource DecimalConverter},Mode=TwoWay}" />
+             <Label Style="{StaticResource ErrorLabel}"
+                    Text="{Binding Car.SystemCapacityValidatable.Errors,Converter={StaticResource FirstValidationErrorConverter}}"
+                    IsVisible="{Binding Car.SystemCapacityValidatable.Errors,Converter={StaticResource ErrorsToVisibilityConverter}}"/>
              <components:MaterialEntry
                     HorizontalOptions="StartAndExpand"
                     Placeholder="{x:Static resources:SecondStepResources.MaintenanceCostsLabel}"

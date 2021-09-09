@@ -1,4 +1,6 @@
 ﻿using System;
+using LPGSavings.Validators.Base;
+using LPGSavings.Validators.Rules;
 using LPGSavings.ViewModels.Base;
 
 namespace LPGSavings.ViewModels
@@ -26,11 +28,17 @@ namespace LPGSavings.ViewModels
             set => SetProperty(ref _dateOfInstallation, value);
         }
 
-        private decimal _averagePriceLPG = Models.DefaultIntroValues.LPG_PRICE;
+        public ValidatableObject<decimal> AveragePriceLPGValidatable { get; } = new ValidatableObject<decimal>(
+            Models.DefaultIntroValues.LPG_PRICE
+        ).AddRule(IsGreaterThanZero<decimal>.Create());
         public decimal AveragePriceLPG 
         {
-            get => _averagePriceLPG;
-            set => SetProperty(ref _averagePriceLPG, value);
+            get => AveragePriceLPGValidatable.Value;
+            set {
+                AveragePriceLPGValidatable.Value = value;
+                OnPropertyChanged(nameof(AveragePriceLPG));
+                OnPropertyChanged(nameof(IsValid));
+            }
         }
 
 
@@ -41,11 +49,16 @@ namespace LPGSavings.ViewModels
             set => SetProperty(ref _installationCost, value);
         }
 
-        private decimal _systemCapacity = 0;
+        public ValidatableObject<decimal> SystemCapacityValidatable { get; } = new ValidatableObject<decimal>(0)
+            .AddRule(IsGreaterThanZero<decimal>.Create());
         public decimal SystemCapacity
         {
-            get => _systemCapacity;
-            set => SetProperty(ref _systemCapacity, value);
+            get => SystemCapacityValidatable.Value;
+            set {
+                SystemCapacityValidatable.Value = value;
+                OnPropertyChanged(nameof(SystemCapacity));
+                OnPropertyChanged(nameof(IsValid));
+            }
         }
         private decimal _maintenanceCosts = 0;
         public decimal MaintenanceCosts
@@ -53,5 +66,7 @@ namespace LPGSavings.ViewModels
             get => _maintenanceCosts;
             set => SetProperty(ref _maintenanceCosts, value);
         }
+
+        public bool IsValid => AveragePriceLPGValidatable.IsValid && SystemCapacityValidatable.IsValid;
     }
 }
