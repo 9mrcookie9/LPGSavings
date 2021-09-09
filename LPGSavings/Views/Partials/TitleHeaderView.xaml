@@ -2,6 +2,7 @@
 <ContentView
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:resources="clr-namespace:LPGSavings.Resx.Partials.TitleHeader"
     xmlns:pancakeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     x:Class="LPGSavings.Views.Partials.TitleHeaderView">
     <ContentView.Content>
@@ -12,9 +13,8 @@
                 <pancakeview:PancakeView.Shadow>
                     <pancakeview:DropShadow />
                 </pancakeview:PancakeView.Shadow>
-                <StackLayout
-                            Orientation="Horizontal">
-                    <Label Text="Dziennik LPG"
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="{x:Static resources:TitleHeaderResource.Header}"
                             FontAttributes="Bold"
                            TextColor="White"
                             HorizontalOptions="FillAndExpand"

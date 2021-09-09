@@ -39,7 +39,12 @@ namespace LPGSavings.Commands.Intro
                     _viewModel.Car.DateOfInstallation);
                 if (_viewModel.Car.OdometerLPG > 0)
                 {
-                    await _fuelingService.AddEntry(_viewModel.Car.OdometerLPG, _viewModel.Car.AveragePriceLPG, 0, 0, _viewModel.Car.Odometer, DateTime.Now);
+                    //TODO: Required information about average consumption
+                    //await _fuelingService.AddEntry(new Models.Forms.FuelingForm {
+                    //    Odometer = _viewModel.Car.OdometerLPG,
+                    //    PriceLPG = _viewModel.Car.AveragePriceLPG,
+                    //     _viewModel.Car.Odometer, DateTime.Now
+                    //});
                 }
                 ConfigurationHelper.CreateInstance().SetCarCreated(true);
                 _viewModel.IsBusy = false;

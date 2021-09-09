@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using LPGSavings.Domain;
+using LPGSavings.Models.Forms;
 
 namespace LPGSavings.Services
 {
     public interface IFuelingService
     {
-        Task AddEntry(decimal litersLPG, decimal priceLPG, decimal litersPB, decimal pricePB, uint odometer, DateTime dateTime);
+        Task AddEntry(FuelingForm form);
         IReadOnlyList<FuelingEntry> GetAll();
     }
 }

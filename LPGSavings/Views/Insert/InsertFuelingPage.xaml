@@ -5,7 +5,9 @@
     xmlns:pancakeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     xmlns:converters="clr-namespace:LPGSavings.Converters"
     xmlns:components="clr-namespace:LPGSavings.Controls"
+    xmlns:resources="clr-namespace:LPGSavings.Resx.Insert.InsertFueling"
     xmlns:insert="clr-namespace:LPGSavings.ViewModels.Insert"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     x:DataType="insert:InsertFuelingViewModel"
             BackgroundColor="#f3f3f3"
     x:Class="LPGSavings.Views.Insert.InsertFuelingPage">
@@ -16,59 +18,89 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout Margin="20"
-                         BackgroundColor="#f3f3f3">
+            <StackLayout BackgroundColor="#f3f3f3">
                 <pancakeview:PancakeView Padding="20"
+                                         Margin="0,0,0,20"
                                   BackgroundColor="{StaticResource PrimaryColorDark}"
                                   CornerRadius="0,0,40,40"
                                   VerticalOptions="Start">
-                <StackLayout
-                            Orientation="Horizontal">
-                    <Label Text="Nowe tankowanie"
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="&#xf060;"
+                           FontSize="30"
+                           TextColor="White"
+                           HorizontalOptions="End"
+                           VerticalTextAlignment="Center"
+                           FontFamily="far"
+                           xct:TouchEffect.PressedOpacity="0.5"
+                           xct:TouchEffect.Command="{Binding CloseModalCommand}"/> 
+                    <Label Text="{x:Static resources:InsertFuelingResource.Header}"
+                           Margin="20,0"
                             FontAttributes="Bold"
+                           VerticalTextAlignment="Center"
                            TextColor="White"
                             HorizontalOptions="FillAndExpand"
                             FontSize="30"/>
                     <Label Text="&#xf52f;"
                             FontSize="30"
                            TextColor="White"
+                           VerticalTextAlignment="Center"
                             HorizontalOptions="End"
                             FontFamily="fas"/> 
                 </StackLayout>
                 </pancakeview:PancakeView>
                 <components:MaterialEntry
-                        Placeholder="Wskazanie drogomierza [km]"
-            BackgroundColor="#f3f3f3"
-                        Text="{Binding Odometer,Converter={StaticResource DecimalConverter},Mode=TwoWay}" />
+                    Placeholder="{x:Static resources:InsertFuelingResource.OdometerLabel}"
+                    BackgroundColor="#f3f3f3"
+                    Text="{Binding Form.Odometer,Mode=TwoWay}" />
                 <components:MaterialEntry
-                        Placeholder="Cena LPG za litr [zł]"
-                        Text="{Binding PriceLPG,Converter={StaticResource DecimalConverter},Mode=TwoWay}" />
+                        Placeholder="{x:Static resources:InsertFuelingResource.PriceLPGLabel}"
+                        Text="{Binding Form.PriceLPG,Converter={StaticResource DecimalConverter},Mode=TwoWay}" />
                 <components:MaterialEntry
-                        Placeholder="Zatankowane LPG [litry]"
-                        Text="{Binding LitersLPG,Converter={StaticResource DecimalConverter},Mode=TwoWay}" />
+                        Placeholder="{x:Static resources:InsertFuelingResource.LitersLPGLabel}"
+                        Text="{Binding Form.LitersLPG,Converter={StaticResource DecimalConverter},Mode=TwoWay}" />
+                <Grid>
+                    <BoxView HeightRequest="1"
+                             Margin="0,10"
+                             BackgroundColor="Black"
+                             HorizontalOptions="FillAndExpand"
+                             VerticalOptions="Start"
+                             Opacity="0.12" />
+                    <Label Text="{x:Static resources:InsertFuelingResource.AdditionalInfoLabel}" 
+                           Margin="20,13,20,0"
+                           TextColor="Gray"
+                           FontSize="11"/>
+                </Grid>
                 <components:MaterialEntry
                         Margin="20,20,20,0"
-                        Placeholder="Cena PB za litr [zł]"
-                        Text="{Binding PricePB,Converter={StaticResource DecimalConverter},Mode=TwoWay}" />
+                        Placeholder="{x:Static resources:InsertFuelingResource.PricePBLabel}"
+                        Text="{Binding Form.PricePB,Converter={StaticResource DecimalConverter},Mode=TwoWay}" />
                 <components:MaterialEntry
-                        Placeholder="Zatankowane PB [litry]"
-                        Text="{Binding LitersBP,Converter={StaticResource DecimalConverter},Mode=TwoWay}" />
+                        Placeholder="{x:Static resources:InsertFuelingResource.LitersPBLabel}"
+                        Text="{Binding Form.LitersPB,Converter={StaticResource DecimalConverter},Mode=TwoWay}" />
+                <Grid>
+                    <BoxView HeightRequest="1"
+                             Margin="0,10"
+                             BackgroundColor="Black"
+                             HorizontalOptions="FillAndExpand"
+                             VerticalOptions="Start"
+                             Opacity="0.12" />
+                    <Label Text="{x:Static resources:InsertFuelingResource.HistoryLabel}"
+                           Margin="20,13,20,0"
+                           TextColor="Gray"
+                           FontSize="11"/>
+                </Grid>
                 <components:MaterialDatePicker
                         Margin="20,20,20,0"
-                        Placeholder="Data tankowania"
+                        Placeholder="{x:Static resources:InsertFuelingResource.DateLabel}"
                         Format="dd.MM.yyyy"
-                        Date="{Binding DateOfOccure,Mode=TwoWay}" />
-                <StackLayout Orientation="Horizontal"
-                             Margin="20">
-                    
-                    <components:MaterialButton Text="Anuluj"
-                                               HorizontalOptions="FillAndExpand"
-                                               Color="DarkRed"/>
-                    <components:MaterialButtonWithIcon Text="Zapisz"
-                                                       HorizontalOptions="FillAndExpand"
-                                                       Icon="&#xf0c7;"
-                                                       Color="Green"/>
-                </StackLayout>
+                        Date="{Binding Form.DateOfOccure,Mode=TwoWay}" />
+                <components:MaterialButtonWithIcon Text="{x:Static resources:InsertFuelingResource.SaveButton}"
+                                                   Margin="20"
+                                                   HorizontalOptions="FillAndExpand"
+                                                   VerticalOptions="EndAndExpand"
+                                                   Command="{Binding AddFuelingCommand}"
+                                                   Icon="&#xf0c7;"
+                                                   Color="Green"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

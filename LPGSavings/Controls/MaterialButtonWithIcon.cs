@@ -115,14 +115,14 @@ namespace LPGSavings.Controls
             Padding = new Thickness(14, 8);
             Label buttonText = new Label()
             {
-                FontSize = 13,
+                FontSize = 15,
                 TextColor = primaryDark,
                 VerticalTextAlignment = TextAlignment.Center,
                 FontAttributes = FontAttributes.Bold
             };
             Label buttonChevron = new Label()
             {
-                FontSize = 15,
+                FontSize = 17,
                 TextColor = primaryDark,
                 VerticalTextAlignment = TextAlignment.Center,
             };

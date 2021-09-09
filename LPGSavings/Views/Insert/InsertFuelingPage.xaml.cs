@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using LPGSavings.ViewModels.Insert;
 using Xamarin.Forms;
 
 namespace LPGSavings.Views.Insert
@@ -10,6 +10,7 @@ namespace LPGSavings.Views.Insert
         public InsertFuelingPage()
         {
             InitializeComponent();
+            BindingContext = new InsertFuelingViewModel();
         }
     }
 }

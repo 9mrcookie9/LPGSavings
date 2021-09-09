@@ -4,17 +4,18 @@ using System.Linq;
 using System.Threading.Tasks;
 using LPGSavings.Domain;
 using LPGSavings.Domain.Contexts;
+using LPGSavings.Models.Forms;
 using Microsoft.EntityFrameworkCore;
 
 namespace LPGSavings.Services
 {
     public class FuelingService : IFuelingService
     {
-        public async Task AddEntry(decimal litersLPG, decimal priceLPG, decimal litersPB, decimal pricePB, uint odometer, DateTime dateTime)
+        public async Task AddEntry(FuelingForm form)
         {
             using var context = new MainContext();
             var car = context.Cars.Include(a => a.FuelingHistory).First();
-            car.AddFueling(litersLPG, priceLPG, litersPB, pricePB, odometer, dateTime);
+            car.AddFueling(form.LitersLPG, form.PriceLPG, form.LitersPB, form.PricePB, form.Odometer, form.DateOfOccure);
             await context.SaveChangesAsync();
 
         }

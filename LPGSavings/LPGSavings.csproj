@@ -52,6 +52,14 @@
     <Folder Include="Resx\Partials\TitleHeader\" />
     <Folder Include="Resx\Read\ListFueling\" />
     <Folder Include="Resx\Read\ListService\" />
+    <Folder Include="Commands\Insert\" />
+    <Folder Include="Models\Forms\" />
+    <Folder Include="Validators\Base\" />
+    <Folder Include="Validators\Rules\" />
+    <Folder Include="Resx\Commands\" />
+    <Folder Include="Resx\Validators\" />
+    <Folder Include="Resx\Validators\IsNotNullRule\" />
+    <Folder Include="Resx\Validators\IsGreaterThanZero\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Assets\Fonts\" />
@@ -88,6 +96,14 @@
     <None Remove="Resx\Partials\TitleHeader\" />
     <None Remove="Resx\Read\ListFueling\" />
     <None Remove="Resx\Read\ListService\" />
+    <None Remove="Commands\Insert\" />
+    <None Remove="Models\Forms\" />
+    <None Remove="Validators\Base\" />
+    <None Remove="Validators\Rules\" />
+    <None Remove="Resx\Commands\" />
+    <None Remove="Resx\Validators\" />
+    <None Remove="Resx\Validators\IsNotNullRule\" />
+    <None Remove="Resx\Validators\IsGreaterThanZero\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Assets\Animations\pig-money.json" />
@@ -113,6 +129,22 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>FirstWelcomeResource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Update="Resx\Partials\TitleHeader\TitleHeaderResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>TitleHeaderResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resx\Insert\InsertFueling\InsertFuelingResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>InsertFuelingResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resx\Validators\IsNotNullRule\IsNotNullRuleResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>IsNotNullRuleResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resx\Validators\IsGreaterThanZero\IsGreaterThanZeroResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>IsGreaterThanZeroResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Resx\IntroForms\FirstStep\FirstStepResources.Designer.cs">
@@ -123,6 +155,18 @@
     </Compile>
     <Compile Update="Resx\General\FirstWelcome\FirstWelcomeResource.Designer.cs">
       <DependentUpon>FirstWelcomeResource.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resx\Partials\TitleHeader\TitleHeaderResource.Designer.cs">
+      <DependentUpon>TitleHeaderResource.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resx\Insert\InsertFueling\InsertFuelingResource.Designer.cs">
+      <DependentUpon>InsertFuelingResource.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resx\Validators\IsNotNullRule\IsNotNullRuleResource.Designer.cs">
+      <DependentUpon>IsNotNullRuleResource.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resx\Validators\IsGreaterThanZero\IsGreaterThanZeroResource.Designer.cs">
+      <DependentUpon>IsGreaterThanZeroResource.resx</DependentUpon>
     </Compile>
   </ItemGroup>
 </Project>

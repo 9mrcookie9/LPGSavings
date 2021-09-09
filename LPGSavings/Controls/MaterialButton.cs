@@ -89,7 +89,7 @@ namespace LPGSavings.Controls
             Padding = new Thickness(14, 8);
             Label buttonText = new Label()
             {
-                FontSize = 13,
+                FontSize = 15,
                 TextColor = primaryDark,
                 VerticalTextAlignment = TextAlignment.Center,
                 HorizontalOptions = LayoutOptions.Center,

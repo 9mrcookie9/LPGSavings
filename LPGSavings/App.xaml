@@ -10,6 +10,12 @@
             <x:String x:Key="ChevronRight">&#xf054;</x:String>
             <Color x:Key="PrimaryColorDark">#1976D2</Color>
             <Color x:Key="PrimaryColor">#2196F3</Color>
+            <Style TargetType="controls:MaterialButton">
+                <Setter Property="HeightRequest" Value="25" />
+            </Style>
+              <Style TargetType="controls:MaterialButtonWithIcon">
+                <Setter Property="HeightRequest" Value="25" />
+            </Style>
             <Style TargetType="controls:MaterialEntry">
                 <Setter Property="BackgroundColor" Value="#f3f3f3" />
             </Style>
