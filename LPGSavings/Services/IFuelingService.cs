@@ -9,6 +9,6 @@ namespace LPGSavings.Services
     public interface IFuelingService
     {
         Task AddEntry(FuelingForm form);
-        IReadOnlyList<FuelingEntry> GetAll();
+        Task<IReadOnlyList<FuelingEntry>> GetAll();
     }
 }

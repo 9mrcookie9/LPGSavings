@@ -15,13 +15,13 @@ namespace LPGSavings.Services
             using var context = new MainContext();
             var car = context.Cars.Include(a => a.ServiceHistory).First();
             car.AddServiceEntry(serviceType, dateOfOccure, odometerValue, price, description);
-            await context.SaveChangesAsync();
+            await context.SaveChangesAsync().ConfigureAwait(false);
         }
 
-        public Car GetCar()
+        public async Task<Car> GetCar()
         {
             using var context = new MainContext();
-            return context.Cars.First();
+            return await context.Cars.AsNoTracking().FirstOrDefaultAsync().ConfigureAwait(false);
         }
 
         public async Task InitializeCar(uint distance, uint distanceLPG, decimal systemPrice, decimal systemCapacity, DateTime installationDate)
@@ -34,7 +34,7 @@ namespace LPGSavings.Services
             }
             var entity = new Car(distance, distance, distanceLPG, distanceLPG, systemPrice, systemCapacity, installationDate);
             context.Cars.Add(entity);
-            await context.SaveChangesAsync();
+            await context.SaveChangesAsync().ConfigureAwait(false);
         }
     }
 }

@@ -16,14 +16,14 @@ namespace LPGSavings.Services
             using var context = new MainContext();
             var car = context.Cars.Include(a => a.FuelingHistory).First();
             car.AddFueling(form.LitersLPG, form.PriceLPG, form.LitersPB, form.PricePB, form.Odometer, form.DateOfOccure);
-            await context.SaveChangesAsync();
+            await context.SaveChangesAsync().ConfigureAwait(false);
 
         }
 
-        public IReadOnlyList<FuelingEntry> GetAll()
+        public async Task<IReadOnlyList<FuelingEntry>> GetAll()
         {
             using var context = new MainContext();
-            return context.Cars.Include(a => a.FuelingHistory).First().FuelingHistory;
+            return await context.Cars.Include(a => a.FuelingHistory).AsNoTracking().SelectMany(a => a.FuelingHistory).ToListAsync().ConfigureAwait(false);
         }
     }
 }
