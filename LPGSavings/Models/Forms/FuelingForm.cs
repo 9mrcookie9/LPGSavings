@@ -7,61 +7,38 @@ namespace LPGSavings.Models.Forms
 {
     public class FuelingForm : BindableObject
     {
-        private float _litersLPG = 0.0f;
-        public float LitersLPG
-        {
-            get => _litersLPG;
-            set {
-                _litersLPG = value;
-                OnPropertyChanged(nameof(LitersRequired));
-                OnPropertyChanged(nameof(LitersLPG));
-            }
-        }
-        public ValidatableObject<float> PriceLPGValidatable { get; } = new ValidatableObject<float>(Models.DefaultIntroValues.LPG_PRICE)
-            .AddRule(IsGreaterThanZero<float>.Create());
-        public float PriceLPG
-        {
-            get => PriceLPGValidatable.Value;
-            set
-            {
-                PriceLPGValidatable.Value = value;
-                OnPropertyChanged(nameof(PriceLPG));
-                OnPropertyChanged(nameof(IsValid));
-            }
-        }
-        private float _litersPB;
-        public float LitersPB
-        {
-            get => _litersPB;
-            set
-            {
-                _litersPB = value;
-                OnPropertyChanged(nameof(LitersRequired));
-                OnPropertyChanged(nameof(LitersPB));
-            }
-        }
-        private float _pricePB = Models.DefaultIntroValues.PB_PRICE;
-        public float PricePB
-        {
-            get => _pricePB;
-            set
-            {
-                _pricePB = value;
-                OnPropertyChanged(nameof(PricePB));
-            }
-        } 
-        public ValidatableObject<uint> OdometerValidatable { get; } = new ValidatableObject<uint>()
-            .AddRule(IsGreaterThanZero<uint>.Create());
-        public uint Odometer
-        {
-            get => OdometerValidatable.Value;
-            set
-            {
-                OdometerValidatable.Value = value;
-                OnPropertyChanged(nameof(Odometer));
-                OnPropertyChanged(nameof(IsValid));
-            }
-        }
+        public ValidatableTextValueHolder<float> LitersLPGValidatable { get; } = new ValidatableTextValueHolder<float>(
+            new FloatTextHolder { Text = Models.DefaultIntroValues.LPG_PRICE.ToString() }
+        ).AddRule(IsFloatInRangeRule.Create(0, 1024));
+
+        public ITextValueHolder<float> LitersLPG => LitersLPGValidatable.TextValue;
+
+
+        public ValidatableTextValueHolder<float> PriceLPGValidatable { get; } = new ValidatableTextValueHolder<float>(
+            new FloatTextHolder { Text = Models.DefaultIntroValues.LPG_PRICE.ToString() }
+        ).AddRule(IsFloatInRangeRule.Create(0,1024));
+         
+        public ITextValueHolder<float> PriceLPG => PriceLPGValidatable.TextValue;
+
+        public ValidatableTextValueHolder<float> LitersPBValidatable { get; } = new ValidatableTextValueHolder<float>(
+             new FloatTextHolder { Text = Models.DefaultIntroValues.Zero }
+         ).AddRule(IsFloatInRangeRule.Create(0, 1024));
+
+        public ITextValueHolder<float> LitersPB => LitersPBValidatable.TextValue;
+
+
+        public ValidatableTextValueHolder<float> PricePBValidatable { get; } = new ValidatableTextValueHolder<float>(
+             new FloatTextHolder { Text = Models.DefaultIntroValues.PB_PRICE.ToString() }
+         ).AddRule(IsFloatInRangeRule.Create(0, 1024));
+
+        public ITextValueHolder<float> PricePB => PricePBValidatable.TextValue;
+
+        public ValidatableTextValueHolder<uint> OdometerValidatable { get; } = new ValidatableTextValueHolder<uint>(
+             new UIntTextHolder { Text = Models.DefaultIntroValues.Zero }
+         ).AddRule(IsIntInRangeRule.Create(0, int.MaxValue));
+
+        public ITextValueHolder<uint> Odometer => OdometerValidatable.TextValue;
+
         private DateTime _dateOfOccure = DateTime.Now;
         public DateTime DateOfOccure
         {
@@ -72,17 +49,31 @@ namespace LPGSavings.Models.Forms
                 OnPropertyChanged(nameof(DateOfOccure));
             }
         }
-        public string LitersRequired => LitersLPG == 0 && LitersPB == 0 ? "Uzupełnij litry!" : null;
+        public string LitersRequired => LitersLPG.Value == 0 && LitersPB.Value == 0 ? "Uzupełnij litry!" : null;
         public bool IsValid
         {
             get {
-                if(LitersLPG == 0 && LitersPB == 0)
+                if(LitersLPG.Value == 0 && LitersPB.Value == 0)
                 {
                     OnPropertyChanged(nameof(LitersRequired));
                     return false;
                 }
-                return OdometerValidatable.IsValid && PriceLPGValidatable.IsValid;
+                return OdometerValidatable.IsValid && PriceLPGValidatable.IsValid
+                    && OdometerValidatable.IsValid && PricePBValidatable.IsValid
+                    && LitersPBValidatable.IsValid;
             }
+        }
+        public FuelingForm()
+        {
+            LitersPB.PropertyChanged += UpdateValid;
+            LitersLPG.PropertyChanged += UpdateValid;
+            OnPropertyChanged(nameof(IsValid));
+        }
+
+        private void UpdateValid(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            OnPropertyChanged(nameof(IsValid));
+            OnPropertyChanged(nameof(LitersRequired));
         }
     }
 }

@@ -8,5 +8,11 @@
             validatableObject.Validate();
             return validatableObject;
         }
+        public static ValidatableTextValueHolder<T> AddRule<T>(this ValidatableTextValueHolder<T> validatableTextValue, IValidationRule<string> rule)
+        {
+            validatableTextValue.Validations.Add(rule);
+            validatableTextValue.Validate();
+            return validatableTextValue;
+        }
     }
 }

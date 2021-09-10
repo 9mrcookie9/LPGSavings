@@ -61,6 +61,7 @@
     <Folder Include="Resx\Validators\" />
     <Folder Include="Resx\Validators\IsNotNullRule\" />
     <Folder Include="Resx\Validators\IsGreaterThanZero\" />
+    <Folder Include="Behaviours\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Assets\Fonts\" />
@@ -106,6 +107,7 @@
     <None Remove="Resx\Validators\IsNotNullRule\" />
     <None Remove="Resx\Validators\IsGreaterThanZero\" />
     <None Remove="sqlite-net-pcl" />
+    <None Remove="Behaviours\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Assets\Animations\pig-money.json" />

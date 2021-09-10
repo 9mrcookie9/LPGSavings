@@ -15,7 +15,7 @@ namespace LPGSavings.Services
         {
             using var context = new MainContext();
             var car = context.Cars.Include(a => a.FuelingHistory).First();
-            car.AddFueling(form.LitersLPG, form.PriceLPG, form.LitersPB, form.PricePB, form.Odometer, form.DateOfOccure);
+            car.AddFueling(form.LitersLPG.Value, form.PriceLPG.Value, form.LitersPB.Value, form.PricePB.Value, form.Odometer.Value, form.DateOfOccure);
             await context.SaveChangesAsync().ConfigureAwait(false);
 
         }
