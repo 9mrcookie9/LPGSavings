@@ -8,7 +8,7 @@ namespace LPGSavings.Models.Forms
     public class FuelingForm : BindableObject
     {
         public ValidatableTextValueHolder<float> LitersLPGValidatable { get; } = new ValidatableTextValueHolder<float>(
-            new FloatTextHolder { Text = Models.DefaultIntroValues.LPG_PRICE.ToString() }
+            new FloatTextHolder { Text = Models.DefaultIntroValues.Zero }
         ).AddRule(IsFloatInRangeRule.Create(0, 1024));
 
         public ITextValueHolder<float> LitersLPG => LitersLPGValidatable.TextValue;

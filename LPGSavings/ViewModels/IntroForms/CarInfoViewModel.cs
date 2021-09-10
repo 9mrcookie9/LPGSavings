@@ -1,4 +1,5 @@
 ﻿using System;
+using LPGSavings.Models;
 using LPGSavings.Validators.Base;
 using LPGSavings.Validators.Rules;
 using LPGSavings.ViewModels.Base;
@@ -7,19 +8,6 @@ namespace LPGSavings.ViewModels
 {
     public sealed class CarInfoViewModel : BaseViewModel
     {
-        private uint _odometer = 0;
-        public uint Odometer
-        {
-            get => _odometer;
-            set => SetProperty(ref _odometer, value);
-        }
-
-        private uint _odometerLPG = 0;
-        public uint OdometerLPG
-        {
-            get => _odometerLPG;
-            set => SetProperty(ref _odometerLPG, value);
-        }
 
         private DateTime _dateOfInstallation = DateTime.Now;
         public DateTime DateOfInstallation
@@ -28,45 +16,46 @@ namespace LPGSavings.ViewModels
             set => SetProperty(ref _dateOfInstallation, value);
         }
 
-        public ValidatableObject<float> AveragePriceLPGValidatable { get; } = new ValidatableObject<float>(
-            Models.DefaultIntroValues.LPG_PRICE
-        ).AddRule(IsGreaterThanZero<float>.Create());
-        public float AveragePriceLPG 
-        {
-            get => AveragePriceLPGValidatable.Value;
-            set {
-                AveragePriceLPGValidatable.Value = value;
-                OnPropertyChanged(nameof(AveragePriceLPG));
-                OnPropertyChanged(nameof(IsValid));
-            }
-        }
+        public ValidatableTextValueHolder<uint> OdometerValidatable { get; } = new ValidatableTextValueHolder<uint>(
+             new UIntTextHolder { Text = Models.DefaultIntroValues.Zero }
+         ).AddRule(IsIntInRangeRule.Create(0, int.MaxValue));
+
+        public ITextValueHolder<uint> Odometer => OdometerValidatable.TextValue;
+
+        public ValidatableTextValueHolder<uint> OdometerLPGValidatable { get; } = new ValidatableTextValueHolder<uint>(
+             new UIntTextHolder { Text = Models.DefaultIntroValues.Zero }
+         ).AddRule(IsIntInRangeRule.Create(0, int.MaxValue));
+
+        public ITextValueHolder<uint> OdometerLPG => OdometerLPGValidatable.TextValue;
+
+        public ValidatableTextValueHolder<float> AveragePriceLPGValidatable { get; } = new ValidatableTextValueHolder<float>(
+            new FloatTextHolder { Text = Models.DefaultIntroValues.LPG_PRICE.ToString() }
+        ).AddRule(IsFloatInRangeRule.Create(0, 1024));
+
+        public ITextValueHolder<float> AveragePriceLPG => AveragePriceLPGValidatable.TextValue;
+
+        public ValidatableTextValueHolder<float> InstallationCostValidatable { get; } = new ValidatableTextValueHolder<float>(
+            new FloatTextHolder { Text = Models.DefaultIntroValues.Zero }
+        ).AddRule(IsFloatInRangeRule.Create(0, 100000));
+
+        public ITextValueHolder<float> InstallationCost => InstallationCostValidatable.TextValue;
 
 
-        private float _installationCost = 0;
-        public float InstallationCost
-        {
-            get => _installationCost;
-            set => SetProperty(ref _installationCost, value);
-        }
+        public ValidatableTextValueHolder<float> SystemCapacityValidatable { get; } = new ValidatableTextValueHolder<float>(
+            new FloatTextHolder { Text = Models.DefaultIntroValues.Zero }
+        ).AddRule(IsFloatInRangeRule.Create(1, 100000));
 
-        public ValidatableObject<float> SystemCapacityValidatable { get; } = new ValidatableObject<float>(0)
-            .AddRule(IsGreaterThanZero<float>.Create());
-        public float SystemCapacity
-        {
-            get => SystemCapacityValidatable.Value;
-            set {
-                SystemCapacityValidatable.Value = value;
-                OnPropertyChanged(nameof(SystemCapacity));
-                OnPropertyChanged(nameof(IsValid));
-            }
-        }
-        private float _maintenanceCosts = 0;
-        public float MaintenanceCosts
-        {
-            get => _maintenanceCosts;
-            set => SetProperty(ref _maintenanceCosts, value);
-        }
+        public ITextValueHolder<float> SystemCapacity => SystemCapacityValidatable.TextValue;
 
-        public bool IsValid => AveragePriceLPGValidatable.IsValid && SystemCapacityValidatable.IsValid;
+
+        public ValidatableTextValueHolder<float> MaintenanceCostsValidatable { get; } = new ValidatableTextValueHolder<float>(
+            new FloatTextHolder { Text = Models.DefaultIntroValues.Zero }
+        ).AddRule(IsFloatInRangeRule.Create(0, 100000));
+
+        public ITextValueHolder<float> MaintenanceCosts => MaintenanceCostsValidatable.TextValue;
+
+        public bool IsValid => AveragePriceLPGValidatable.IsValid && SystemCapacityValidatable.IsValid
+            && InstallationCostValidatable.IsValid && MaintenanceCostsValidatable.IsValid
+            && OdometerLPGValidatable.IsValid && OdometerValidatable.IsValid;
     }
 }

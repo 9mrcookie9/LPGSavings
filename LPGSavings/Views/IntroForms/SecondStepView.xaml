@@ -16,25 +16,23 @@
                        Text="{x:Static resources:SecondStepResources.Header}"/>
              <components:MaterialEntry
                     Placeholder="{x:Static resources:SecondStepResources.AverageLPGPriceLabel}"
-                    Text="{Binding Car.AveragePriceLPG,Converter={StaticResource FloatConverter},Mode=TwoWay}" />
-             <Label Style="{StaticResource ErrorLabel}"
-                    Text="{Binding Car.AveragePriceLPGValidatable.Errors,Converter={StaticResource FirstValidationErrorConverter}}"
-                    IsVisible="{Binding Car.AveragePriceLPGValidatable.Errors,Converter={StaticResource ErrorsToVisibilityConverter}}"/>
+                    Text="{Binding Car.AveragePriceLPG.Text}"
+                    Errors="{Binding Car.AveragePriceLPGValidatable.Errors}"/>
              <components:MaterialEntry
                     HorizontalOptions="StartAndExpand"
                     Placeholder="{x:Static resources:SecondStepResources.InstallationCostLabel}"
-                    Text="{Binding Car.InstallationCost,Converter={StaticResource FloatConverter},Mode=TwoWay}"/>
+                    Text="{Binding Car.InstallationCost.Text}"
+                    Errors="{Binding Car.InstallationCostValidatable.Errors}"/>
              <components:MaterialEntry
                     HorizontalOptions="StartAndExpand"
                     Placeholder="{x:Static resources:SecondStepResources.SystemCapacityLabel}"
-                    Text="{Binding Car.SystemCapacity,Converter={StaticResource FloatConverter},Mode=TwoWay}" />
-             <Label Style="{StaticResource ErrorLabel}"
-                    Text="{Binding Car.SystemCapacityValidatable.Errors,Converter={StaticResource FirstValidationErrorConverter}}"
-                    IsVisible="{Binding Car.SystemCapacityValidatable.Errors,Converter={StaticResource ErrorsToVisibilityConverter}}"/>
+                    Text="{Binding Car.SystemCapacity.Text}"
+                    Errors="{Binding Car.SystemCapacityValidatable.Errors}"/>
              <components:MaterialEntry
                     HorizontalOptions="StartAndExpand"
                     Placeholder="{x:Static resources:SecondStepResources.MaintenanceCostsLabel}"
-                    Text="{Binding Car.MaintenanceCosts,Converter={StaticResource FloatConverter},Mode=TwoWay}" />
+                    Text="{Binding Car.MaintenanceCosts.Text}"
+                    Errors="{Binding Car.MaintenanceCostsValidatable.Errors}"/>
              <ActivityIndicator IsEnabled="{Binding IsBusy}"
                                 IsRunning="{Binding IsBusy}"
                                 IsVisible="{Binding IsBusy}"
@@ -44,12 +42,12 @@
                                 VerticalOptions="CenterAndExpand"
                                 HorizontalOptions="Center" />
             
-            <components:MaterialButtonWithIcon VerticalOptions="EndAndExpand"
-                                             Margin="0,40"
-                                             Command="{Binding CreateCarCommand}"
-                                             HorizontalOptions="Center"
-                                             Color="Blue"
-                                             Text="{x:Static resources:SecondStepResources.FinishConfigurationButton}"/>
+            <components:MaterialButtonWithIcon   VerticalOptions="EndAndExpand"
+                                                 Margin="0,40"
+                                                 Command="{Binding CreateCarCommand}"
+                                                 HorizontalOptions="Center"
+                                                 Color="Blue"
+                                                 Text="{x:Static resources:SecondStepResources.FinishConfigurationButton}"/>
             </StackLayout>
     </ContentView.Content>
 </ContentView>

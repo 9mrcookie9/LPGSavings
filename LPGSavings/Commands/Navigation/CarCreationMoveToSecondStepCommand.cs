@@ -15,7 +15,13 @@ namespace LPGSavings.Commands.Intro
         public CarCreationMoveToSecondStepCommand(ICarInfoViewModel baseViewModel)
         {
             _baseViewModel = baseViewModel;
+            _baseViewModel.Car.PropertyChanged += RaiseSelfCanExecuteChanged;
         }
+
+        private void RaiseSelfCanExecuteChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e) => RaiseCanExecuteChanged();
+
+        public override bool CanExecute(object parameter) => _baseViewModel.Car.OdometerLPGValidatable.IsValid &&
+            _baseViewModel.Car.OdometerValidatable.IsValid;
 
         public override async Task ExecuteAsync(object parameter = null)
         {

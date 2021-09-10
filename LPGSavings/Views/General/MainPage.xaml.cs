@@ -15,7 +15,7 @@ namespace LPGSavings.Views.General
         public MainPage()
         {
             InitializeComponent();
-            if (ConfigurationHelper.CreateInstance().IsCarCreated())
+            if (false && ConfigurationHelper.CreateInstance().IsCarCreated())
             {
                 mainGridHolder.Children.Add(new DashboardView());
             }

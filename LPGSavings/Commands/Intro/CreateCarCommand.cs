@@ -37,12 +37,12 @@ namespace LPGSavings.Commands.Intro
             {
                 await Task.Delay(50);
                 await _carService.InitializeCar(
-                    _viewModel.Car.Odometer,
-                    _viewModel.Car.OdometerLPG,
-                    _viewModel.Car.InstallationCost,
-                    _viewModel.Car.SystemCapacity,
+                    _viewModel.Car.Odometer.Value,
+                    _viewModel.Car.OdometerLPG.Value,
+                    _viewModel.Car.InstallationCost.Value,
+                    _viewModel.Car.SystemCapacity.Value,
                     _viewModel.Car.DateOfInstallation);
-                if (_viewModel.Car.OdometerLPG > 0)
+                if (_viewModel.Car.OdometerLPG.Value > 0)
                 {
                     //TODO: Required information about average consumption
                     //await _fuelingService.AddEntry(new Models.Forms.FuelingForm {

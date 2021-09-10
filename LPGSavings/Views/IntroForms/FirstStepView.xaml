@@ -15,21 +15,23 @@
                Text="{x:Static resources:FirstStepResources.Header}" />
             <components:MaterialEntry
                Placeholder="{x:Static resources:FirstStepResources.OdometerLabel}"
-               Text="{Binding Car.Odometer,Mode=TwoWay}" />
+               Text="{Binding Car.Odometer.Text}"
+               Errors="{Binding Car.OdometerValidatable.Errors}" />
             <components:MaterialEntry
                Placeholder="{x:Static resources:FirstStepResources.OdometerLPGLabel}"
-               Text="{Binding Car.OdometerLPG,Mode=TwoWay}" />
+               Text="{Binding Car.OdometerLPG.Text}"
+               Errors="{Binding Car.OdometerLPGValidatable.Errors}"/>
             <components:MaterialDatePicker
                Placeholder="{x:Static resources:FirstStepResources.InstallationDateLabel}"
                Format="dd.MM.yyyy"
                Date="{Binding Car.DateOfInstallation,Mode=TwoWay}" />
             <components:MaterialButtonWithIcon
-                VerticalOptions="EndAndExpand"
-                Margin="0,40"
-                Command="{Binding CarCreationMoveToSecondStep}"
-                HorizontalOptions="Center"
-                Color="Blue"
-                Text="{x:Static resources:FirstStepResources.ContinueButton}"/>
+                    VerticalOptions="EndAndExpand"
+                    Margin="0,40"
+                    Command="{Binding CarCreationMoveToSecondStep}"
+                    HorizontalOptions="Center"
+                    Color="Blue"
+                    Text="{x:Static resources:FirstStepResources.ContinueButton}"/>
         </StackLayout>
     </ContentView.Content>
 </ContentView>
