@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using LPGSavings.Services;
+using LPGSavings.ViewModels.Base;
 using LPGSavings.Views;
 using Xamarin.Forms;
 
@@ -15,7 +16,7 @@ namespace LPGSavings.Views.General
         public MainPage()
         {
             InitializeComponent();
-            if (false && ConfigurationHelper.CreateInstance().IsCarCreated())
+            if (ConfigurationHelper.CreateInstance().IsCarCreated())
             {
                 mainGridHolder.Children.Add(new DashboardView());
             }
@@ -24,7 +25,14 @@ namespace LPGSavings.Views.General
                 mainGridHolder.Children.Add(new FirstWelcomeView());
             }
         }
-
+        protected override bool OnBackButtonPressed()
+        {
+            if(mainGridHolder.Children.LastOrDefault()?.BindingContext is IBackButtonViewModel backButton)
+            {
+                return backButton.OnBackButtonPressed();
+            }
+            return base.OnBackButtonPressed();
+        }
         public Grid MainHolder => mainGridHolder;
     }
 }

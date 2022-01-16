@@ -11,5 +11,7 @@
             Liters = liters;
             Price = price;
         }
+
+        public float Sum => Liters * Price;
     }
 }

@@ -1,9 +1,49 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ContentView
     xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="LPGSavings.Views.Read.ListFuelingView">
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:read="clr-namespace:LPGSavings.ViewModels.Read" xmlns:domain="clr-namespace:LPGSavings.Domain" xmlns:xct="http://xamarin.com/schemas/2020/toolkit" xmlns:pancakeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    x:Class="LPGSavings.Views.Read.ListFuelingView"
+    x:DataType="read:ListFuelingViewModel">
     <ContentView.Content>
-        
+        <CollectionView ItemsSource="{Binding Entries}" 
+                        ItemsUpdatingScrollMode="KeepItemsInView"
+                        RemainingItemsThreshold="{Binding Limit}"
+                        RemainingItemsThresholdReachedCommand="{Binding LoadMoreFuelingCommand}">
+            <CollectionView.EmptyView>
+                <Grid>
+                    <Label Text="Brak danych.." IsVisible="{Binding IsNotBusy}"/>
+                    <Label Text="Wyszukiwanie.." IsVisible="{Binding IsBusy}" />
+                    <ActivityIndicator IsVisible="{Binding IsBusy}"
+                                        IsRunning="{Binding IsBusy}"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center"/>
+                </Grid>
+            </CollectionView.EmptyView>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="domain:FuelingEntry">
+                    <ContentView>
+                        <pancakeview:PancakeView Margin="20"
+                                                    Padding="20"
+                                                    CornerRadius="10"
+                                                    BackgroundColor="White">
+                            <pancakeview:PancakeView.Shadow>
+                                <pancakeview:DropShadow />
+                            </pancakeview:PancakeView.Shadow>
+                            <StackLayout Orientation="Vertical">
+                                <Label Text="{Binding DateOfOccure,StringFormat='{}Data tankowania: {0:dd.MM.yyyy}'}"
+                                        FontSize="16"
+                                        FontAttributes="Bold"/> 
+                                <Label Text="{Binding LPGInfo.Liters, StringFormat='{}Ilość litrów LPG: {0} l'}" />
+                                <Label Text="{Binding PBInfo.Liters, StringFormat='{}Ilość litrów PB: {0} l'}" />
+                                <Label Text="{Binding PBInfo.Price, StringFormat='{}Cena PB: {0} zł'}" />
+                                <Label Text="{Binding LPGInfo.Price, StringFormat='{}Cena LPG: {0} zł'}" />
+                                <Label Text="{Binding LPGInfo.Sum, StringFormat='{}Łącznie za LPG: {0} zł'}" />
+                                <Label Text="{Binding PBInfo.Sum, StringFormat='{}Łącznie za PB: {0} zł'}" />
+                            </StackLayout>
+                        </pancakeview:PancakeView>
+                    </ContentView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
     </ContentView.Content>
 </ContentView>

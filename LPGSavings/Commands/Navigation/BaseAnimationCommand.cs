@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-
+using LPGSavings.Views.Base;
 using LPGSavings.Views.IntroForms;
 
 using Xamarin.Forms;
@@ -31,6 +31,10 @@ namespace LPGSavings.Commands.Intro
             {
                 pageHolder.Children.RemoveAt(pageHolder.Children.Count - 1);
                 await Task.Delay(5);
+            }
+            if(secondView is IAnimationCompleted completed)
+            {
+                await completed.AnimationCompleted();
             }
         }
     }

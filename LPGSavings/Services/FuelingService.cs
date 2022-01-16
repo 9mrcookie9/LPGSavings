@@ -23,7 +23,27 @@ namespace LPGSavings.Services
         public async Task<IReadOnlyList<FuelingEntry>> GetAll()
         {
             using var context = new MainContext();
-            return await context.Cars.Include(a => a.FuelingHistory).AsNoTracking().SelectMany(a => a.FuelingHistory).ToListAsync().ConfigureAwait(false);
+            return await context.Cars.Include(a => a.FuelingHistory)
+                .AsNoTracking()
+                .SelectMany(a => a.FuelingHistory)
+                .ToListAsync()
+                .ConfigureAwait(false);
+        }
+        public async Task<IReadOnlyList<FuelingEntry>> GetPaged(int page,int pageSize)
+        {
+            using var context = new MainContext();
+            return await context.Cars
+                .Include(a => a.FuelingHistory)
+                    .ThenInclude(a => a.LPGInfo)
+                .Include(a => a.FuelingHistory)
+                    .ThenInclude(a => a.PBInfo)
+                .AsNoTracking()
+                .SelectMany(a => a.FuelingHistory)
+                .OrderByDescending(a => a.DateOfOccure)
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync()
+                .ConfigureAwait(false);
         }
     }
 }
